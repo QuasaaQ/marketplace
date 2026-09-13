@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Yen → RUB для DeepSeek — Q Marketplace</title>
+  <meta name="description" content="Расширение показывает цены в рублях рядом с ценами в ¥ (CNY) на platform.deepseek.com. Курс задаётся в настройках.">
+  <link rel="icon" href="../assets/icon.svg">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="../"><span class="brand-mark">Q</span> Marketplace</a>
+  <nav class="site-nav">
+    <a href="../">Все расширения</a>
+    <a href="https://github.com/QuasaaQ" target="_blank" rel="noopener">GitHub</a>
+  </nav>
+</header>
+
+<main class="article">
+  <div class="wrap">
+
+    <a class="crumb" href="../">← Все расширения</a>
+
+    <h1>Yen → RUB для DeepSeek</h1>
+    <p class="lead">Показывает цену в рублях рядом с ценой в ¥ (CNY) на сайте <strong>platform.deepseek.com</strong>. Курс вы задаёте сами — конвертация мгновенная и работает даже для цен, подгружаемых динамически.</p>
+
+    <div class="download-box">
+      <div class="meta">
+        <strong>yen-to-rub-v1.0.0.zip</strong>
+        Версия 1.0.0 · Manifest V3 · Chrome / Яндекс Браузер
+      </div>
+      <div class="card-actions">
+        <a class="btn btn-success" href="../downloads/yen-to-rub-v1.0.0.zip" download>Скачать .zip</a>
+      </div>
+    </div>
+
+    <h2>Возможности</h2>
+    <ul class="feature-list">
+      <li><strong>Рублёвая цена рядом</strong> с ценой в ¥ — например, <code>¥9.90</code> превращается в <code>122,50 ₽</code>.</li>
+      <li><strong>Свой курс</strong> — «сколько рублей стоит 1 ¥», задаётся в настройках в любой момент.</li>
+      <li><strong>Стиль сайта сохраняется</strong> — цвет и размер шрифта рублёвой цены копируются с исходной.</li>
+      <li><strong>Динамические цены</strong> — страница отслеживается, поэтому новые цены конвертируются сразу.</li>
+      <li><strong>Никаких данных наружу</strong> — расширению нужен только доступ к storage для хранения курса.</li>
+    </ul>
+
+    <h2>Установка</h2>
+    <ol class="steps">
+      <li>Нажмите <strong>Скачать .zip</strong> выше и распакуйте архив в постоянную папку, например <code>Документы\Extensions\yen-to-rub</code>.</li>
+      <li>Откройте страницу расширений: <code>chrome://extensions</code> (Chrome) или <code>browser://extensions</code> (Яндекс Браузер).</li>
+      <li>Включите <strong>Режим разработчика</strong> в правом верхнем углу.</li>
+      <li>Нажмите <strong>Загрузить распакованное расширение</strong> и выберите папку с файлом <code>manifest.json</code>.</li>
+    </ol>
+
+    <p class="note">Папку нельзя удалять или перемещать — браузер запускает расширение прямо из неё.</p>
+
+    <h2>Настройка курса</h2>
+    <ol class="steps">
+      <li>Нажмите на иконку расширения в панели браузера — появится поле «Курс (₽ за 1 ¥)».</li>
+      <li>Введите значение, например <code>12.50</code> (значит 1 ¥ = 12,50 ₽), и нажмите <strong>Сохранить</strong>.</li>
+      <li>Обновите или откройте вкладку platform.deepseek.com — цены в рублях появятся автоматически.</li>
+    </ol>
+    <p class="note">Полная страница настроек доступна по клику правой кнопкой по иконке расширения → «Параметры».</p>
+
+    <h2>Структура архива</h2>
+    <ul class="feature-list">
+      <li><code>manifest.json</code> — манифест MV3.</li>
+      <li><code>content.js</code> — конвертация цен на странице.</li>
+      <li><code>popup.html / .css / .js</code> — быстрая настройка курса.</li>
+      <li><code>options.html / .css / .js</code> — полная страница настроек.</li>
+      <li><code>icons/</code> — иконки 16/32/48/128.</li>
+    </ul>
+
+    <h2>Частые вопросы</h2>
+    <ul class="feature-list">
+      <li><strong>Подходит ли для Яндекс Браузера?</strong> Да, он на движке Chromium и поддерживает расширения Chrome (Manifest V3).</li>
+      <li><strong>Почему браузер ругается на неизвестный источник?</strong> Так бывает при ручной установке распакованного расширения — это ожидаемо.</li>
+      <li><strong>Куда отправляются мои данные?</strong> Никуда. Хранится только заданный вами курс, локально в браузере.</li>
+    </ul>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© <span id="year">2026</span> Q Marketplace</span>
+    <a href="../">Все расширения</a>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Q Marketplace — расширения для Chrome и Яндекс Браузера</title>
+  <meta name="description" content="Бесплатные расширения для Chrome и Яндекс Браузера. Скачивание и установка в два шага.">
+  <link rel="icon" href="assets/icon.svg">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="./"><span class="brand-mark">Q</span> Marketplace</a>
+  <nav class="site-nav">
+    <a href="#extensions">Расширения</a>
+    <a href="#how">Как установить</a>
+    <a href="https://github.com/QuasaaQ" target="_blank" rel="noopener">GitHub</a>
+  </nav>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="wrap">
+      <h1>Расширения для Chrome<br>и Яндекс Браузера</h1>
+      <p>Небольшие расширения, которые делают удобнее повседневные сайты. Скачивание бесплатное, без регистрации и телеметрии.</p>
+      <div class="hero-badges">
+        <span class="badge">Manifest V3</span>
+        <span class="badge">Без сбора данных</span>
+        <span class="badge">Открытый код</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="extensions">
+    <div class="wrap">
+      <h2 class="section-title">Расширения</h2>
+      <p class="section-sub">Выберите расширение, чтобы открыть описание и установку.</p>
+
+      <div class="grid">
+
+        <article class="card">
+          <div class="card-head">
+            <div class="card-icon"><img src="assets/icon.svg" alt=""></div>
+            <div>
+              <h3>Yen → RUB для DeepSeek</h3>
+            </div>
+          </div>
+          <p>Показывает цены в рублях рядом с ценами в ¥ (CNY) на platform.deepseek.com. Курс задаётся в настройках.</p>
+          <div class="card-actions">
+            <a class="btn btn-primary" href="yen-to-rub/">Подробнее</a>
+            <a class="btn" href="downloads/yen-to-rub-v1.0.0.zip" download>Скачать .zip</a>
+          </div>
+        </article>
+
+        <!-- Шаблон для нового расширения: добавляйте новые карточки сюда -->
+        <article class="card" style="opacity:.55">
+          <div class="card-head">
+            <div class="card-icon"><span style="font-size:20px;color:#111">+</span></div>
+            <div><h3>Скоро</h3></div>
+          </div>
+          <p>Здесь появятся следующие расширения.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="how">
+    <div class="wrap">
+      <h2 class="section-title">Как установить расширение</h2>
+      <p class="section-sub">Chrome и Яндекс Браузер работают одинаково — расширения ставятся из ZIP-архива.</p>
+
+      <ol class="steps">
+        <li>Скачайте <code>.zip</code> нужного расширения с этой страницы и распакуйте его в любую постоянную папку (например <code>Документы\Extensions</code>).</li>
+        <li>Откройте страницу расширений: в Chrome — <code>chrome://extensions</code>, в Яндекс Браузере — <code>browser://extensions</code>.</li>
+        <li>Включите <strong>Режим разработчика</strong> (переключатель в правом верхнем углу).</li>
+        <li>Нажмите <strong>Загрузить распакованное расширение</strong> и выберите распакованную папку (ту, где лежит <code>manifest.json</code>).</li>
+      </ol>
+
+      <p class="note">Важно: не удаляйте распакованную папку — браузер загружает расширение из неё. При первом запуске Яндекс Браузер может показать предупреждение о расширениях из неизвестного источника — это нормально для файлов, установленных вручную.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© <span id="year">2026</span> Q Marketplace</span>
+    <a href="https://github.com/QuasaaQ" target="_blank" rel="noopener">github.com/QuasaaQ</a>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
