@@ -1,4 +1,4 @@
-# Q Marketplace — сайт (GitHub Pages)
+# Q Marketplace - сайт (GitHub Pages)
 
 Витрина расширений для Chrome и Яндекс Браузера.
 
@@ -24,27 +24,27 @@ Q.Marketplace\
   site\                  этот репозиторий (публикуется на Pages)
 ```
 
-Вручную править сгенерированные файлы **не нужно** — при следующей сборке они перезапишутся.
+Вручную править сгенерированные файлы **не нужно** - при следующей сборке они перезапишутся.
 Ручные файлы здесь: `assets/style.css`, `assets/icon.svg`, `404.html`, `.nojekyll`.
 
 ## Структура
 
 ```
-index.html                 — главная (витрина), генерируется
-404.html                   — страница «не найдено»
-assets/style.css           — общие стили (правится вручную)
-assets/icon.svg            — иконка сайта (правится вручную)
-assets/<slug>.png          — иконки расширений, копируются сборщиком
-downloads/<slug>.crx       — подписанные расширения
-downloads/<slug>-v<ver>.zip— архивы для установки в Яндекс Браузере
-downloads/<slug>-update.xml— манифесты обновлений
-install/index.html         — инструкция по установке, генерируется
-install/install-policy.reg — политики для Chrome (Sources + Allowlist)
-install/install-policy-forcelist.reg — то же + автоустановка (управляемые ПК)
-install/APPLY-POLICY.bat   — применение политик
-install/CLEAN-POLICY.bat   — откат политик
-<slug>/index.html          — страница расширения, генерируется
-.nojekyll                  — отключает обработку Jekyll
+index.html                 - главная (витрина), генерируется
+404.html                   - страница «не найдено»
+assets/style.css           - общие стили (правится вручную)
+assets/icon.svg            - иконка сайта (правится вручную)
+assets/<slug>.png          - иконки расширений, копируются сборщиком
+downloads/<slug>.crx       - подписанные расширения
+downloads/<slug>-v<ver>.zip- архивы для установки в Яндекс Браузере
+downloads/<slug>-update.xml- манифесты обновлений
+install/index.html         - инструкция по установке, генерируется
+install/install-policy.reg - политики для Chrome (Sources + Allowlist)
+install/install-policy-forcelist.reg - то же + автоустановка (управляемые ПК)
+install/APPLY-POLICY.bat   - применение политик
+install/CLEAN-POLICY.bat   - откат политик
+<slug>/index.html          - страница расширения, генерируется
+.nojekyll                  - отключает обработку Jekyll
 ```
 
 ## Формат политик (важно)
@@ -69,7 +69,7 @@ install/CLEAN-POLICY.bat   — откат политик
 
 Ограничения, проверенные на практике:
 
-- Яндекс Браузер блокирует установку сторонних расширений с сайтов на не-корпоративных ПК — политикой не снимается.
+- Яндекс Браузер блокирует установку сторонних расширений с сайтов на не-корпоративных ПК - политикой не снимается.
 - `ExtensionInstallForcelist` на не-корпоративном ПК отклоняется с сообщением «компьютер не является корпоративным».
 
 ## Публикация
