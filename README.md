@@ -1,10 +1,10 @@
 # Q Marketplace (quasaq.github.io)
 
 Витрина расширений для Chrome и Яндекс Браузера. Сайт публикуется через **GitHub Pages**
-из этого репозитория и доступен по адресу:
+из этого репозитория (`marketplace`) и доступен по адресу:
 
 ```
-https://quasaq.github.io/
+https://quasaaq.github.io/marketplace/
 ```
 
 ## Структура сайта
