@@ -3,156 +3,180 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Установка — Yen → RUB для DeepSeek</title>
-  <meta name="description" content="Установка расширения Yen → RUB: установка в один клик с сайта через политику браузера, ручная установка и варианты для парка ПК.">
+  <title>Установка расширений — Q Marketplace</title>
+  <meta name="description" content="Установка расширений Chrome и Яндекс Браузера с сайта">
   <link rel="icon" href="../assets/icon.svg">
   <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
 
 <header class="site-header">
-  <a class="brand" href="../"><span class="brand-mark">Q</span> Marketplace</a>
+  <a class="brand" href=".././"><span class="brand-mark">Q</span> Marketplace</a>
   <nav class="site-nav">
-    <a href="../">Все расширения</a>
-    <a href="https://github.com/QuasaaQ/marketplace" target="_blank" rel="noopener">GitHub</a>
+    <a href="../#extensions">Расширения</a>
+    <a href="../install/">Установка</a>
+    <a href="https://github.com/QuasaaQ" target="_blank" rel="noopener">GitHub</a>
   </nav>
-</header>
-
-<main class="article">
+</header><main class="article">
   <div class="wrap">
 
     <a class="crumb" href="../">← Все расширения</a>
 
-    <h1>Установка расширения</h1>
-    <p class="lead">Способ установки зависит от браузера. Ниже — проверенные на практике варианты, от «один клик с сайта» до ручной установки.</p>
+    <h1>Установка расширений</h1>
+    <p class="lead">Способ зависит от браузера. Ниже — проверенные варианты, от «один клик с сайта» до ручной установки.</p>
 
-    <div class="download-box">
-      <div class="meta">
-        <strong>Yen → RUB для DeepSeek</strong>
-        Версия 1.0.0 · ID: <code>cdoacknmgmgemgkhjemnlcmebofaldnb</code>
-      </div>
-      <div class="card-actions">
-        <a class="btn btn-success" href="../downloads/yen-to-rub.crx">Установить в один клик</a>
-        <a class="btn" href="../downloads/yen-to-rub-v1.0.0.zip" download>Скачать .zip</a>
-      </div>
-    </div>
-
-    <h2>Вариант 1. Chrome — установка в один клик (работает)</h2>
-    <p class="lead">Chrome позволяет ставить расширение прямо с этого сайта, если один раз разрешить установку политикой. Обновления потом приходят автоматически.</p>
-
+    <h2>Chrome — установка в один клик</h2>
     <ol class="steps">
-      <li>Скачайте файл политики: <a href="install-policy.reg" download><code>install-policy.reg</code></a>.</li>
-      <li>Нажмите по нему правой кнопкой → <strong>Слияние</strong>, согласитесь на запрос UAC и добавление данных в реестр.</li>
-      <li><strong>Полностью закройте Chrome</strong> (все окна; проверьте, что в трее не осталось процессов) и запустите заново.</li>
-      <li>Проверьте: <code>chrome://policy</code> → включите «Показывать не заданные политики» → найдите <code>ExtensionInstallSources</code> со статусом <strong>ОК</strong>.</li>
-      <li>Нажмите <strong>«Установить в один клик»</strong> выше и подтвердите добавление расширения.</li>
+      <li>Скачайте <a href="install-policy.reg" download><code>install-policy.reg</code></a> и примените его от имени администратора (правый клик → «Слияние»).</li>
+      <li><strong>Полностью закройте Chrome</strong> — все окна и фоновые процессы — и запустите заново.</li>
+      <li>Проверьте: <code>chrome://policy</code> → <code>ExtensionInstallSources</code> должен быть в статусе <strong>ОК</strong>.</li>
+      <li>Нажмите <strong>«Установить в один клик»</strong> у нужного расширения ниже и подтвердите установку.</li>
     </ol>
 
-    <p class="note">
-      Ключевая деталь: списковые политики в реестре должны храниться как <strong>подраздел с нумерованными значениями</strong>
-      (<code>ExtensionInstallSources</code> → <code>1</code>, <code>2</code>, … типа <code>REG_SZ</code>). Формат <code>REG_MULTI_SZ</code>
-      браузеры не читают, и политика при этом выглядит как «не задана».
-    </p>
-
-    <h2>Вариант 2. Яндекс Браузер — установка перетаскиванием архива</h2>
-    <p class="lead">
-      Яндекс Браузер не разрешает ставить сторонние расширения с сайтов (политикой это не снимается), но позволяет
-      установить расширение, перетащив архив в специальную страницу настроек Браузера.
-    </p>
-
+    <h2>Яндекс Браузер — установка перетаскиванием</h2>
+    <p class="lead">Яндекс Браузер не разрешает ставить сторонние расширения с сайтов, но позволяет установить архив перетаскиванием.</p>
     <ol class="steps">
-      <li>Скачайте <a href="../downloads/yen-to-rub-v1.0.0.zip">ZIP-архив</a> — распаковывать его не нужно.</li>
+      <li>Скачайте <strong>.zip</strong> нужного расширения ниже — распаковывать не нужно.</li>
       <li>Откройте в Браузере страницу <code>browser://tune</code>.</li>
-      <li>Откройте папку со скачанным архивом и <strong>перетащите архив</strong> в окно Браузера.</li>
-      <li>Подтвердите установку — расширение появится в разделе <strong>«Из других источников»</strong>.</li>
+      <li>Перетащите архив в окно Браузера и подтвердите установку.</li>
+      <li>Расширение появится в разделе <strong>«Из других источников»</strong>.</li>
     </ol>
 
-    <p class="note">
-      После установки Яндекс Браузер может показать предупреждение о расширении из другого источника — это ожидаемо для
-      расширений, установленных вручную. Расширению нужен только доступ к хранению настроек (<code>storage</code>),
-      чтобы запомнить заданный вами курс. Установка выполняется один раз на компьютере и дальше не повторяется.
-    </p>
-
-    <h2>Вариант 3. Автоустановка на парк ПК</h2>
-    <p class="lead">
-      Политика <code>ExtensionInstallForcelist</code> устанавливает расширение автоматически, вообще без действий пользователя.
-      Но она работает <strong>только на корпоративных (управляемых) компьютерах</strong>: входящих в домен, присоединённых к Azure AD
-      или управляемых через консоль. На обычном домашнем ПК Яндекс Браузер отклоняет такую установку с сообщением
-      «этот компьютер не является корпоративным».
-    </p>
-
+    <h2>Автоустановка на парк ПК</h2>
+    <p class="lead">Политика <code>ExtensionInstallForcelist</code> ставит расширения сама, без действий пользователя, но работает только на управляемых (корпоративных) компьютерах.</p>
     <div class="download-box">
       <div class="meta">
         <strong>install-policy-forcelist.reg</strong>
-        Политики Sources + Allowlist + Forcelist (для управляемых ПК)
+        Политики Sources + Allowlist + Forcelist
       </div>
       <div class="card-actions">
         <a class="btn" href="install-policy-forcelist.reg" download>Скачать .reg</a>
       </div>
     </div>
 
-    <p class="lead">Для применения на нескольких компьютерах удобнее готовые скрипты (запускать от имени администратора, сами запрашивают права):</p>
-
+    <p class="lead">Скрипты применения и отката политик во всех браузерах:</p>
     <div class="download-box">
       <div class="meta">
         <strong>APPLY-POLICY.bat</strong>
-        Включает установку из нашего сайта (Sources + Allowlist) во всех браузерах
+        Включает установку из нашего сайта (Sources + Allowlist)
       </div>
       <div class="card-actions">
         <a class="btn" href="APPLY-POLICY.bat" download>Скачать .bat</a>
       </div>
     </div>
-
     <div class="download-box">
       <div class="meta">
         <strong>CLEAN-POLICY.bat</strong>
-        Полностью удаляет установленные политики (откат)
+        Удаляет установленные политики (откат)
       </div>
       <div class="card-actions">
         <a class="btn" href="CLEAN-POLICY.bat" download>Скачать .bat</a>
       </div>
     </div>
 
-    <h2>Настройка курса</h2>
-    <ol class="steps">
-      <li>Нажмите на иконку расширения в панели браузера — появится поле «Курс (₽ за 1 ¥)».</li>
-      <li>Введите значение, например <code>12.50</code> (значит 1 ¥ = 12,50 ₽), и нажмите <strong>Сохранить</strong>.</li>
-      <li>Откройте platform.deepseek.com — цены в рублях появятся рядом с ценами в юанях.</li>
-    </ol>
+    <h2>Расширения</h2>
+    <div class="grid">
+        <article class="card">
+          <div class="card-head">
+            <div class="card-icon"><img src="../assets/yen-to-rub.png" alt=""></div>
+            <div><h3>Yen → RUB для DeepSeek</h3><span class="badge">v1.0.0</span></div>
+          </div>
+          <p>ID: <code>cdoacknmgmgemgkhjemnlcmebofaldnb</code></p>
+          <div class="card-actions">
+            <a class="btn btn-success" href="../downloads/yen-to-rub.crx">Установить в один клик</a>
+            <a class="btn" href="../downloads/yen-to-rub-v1.0.0.zip" download>Скачать .zip</a>
+            <a class="btn" href="../yen-to-rub/">Подробнее</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-head">
+            <div class="card-icon"><img src="../assets/a-motivac.png" alt=""></div>
+            <div><h3>A.MOTIVAC</h3><span class="badge">v1.3</span></div>
+          </div>
+          <p>ID: <code>fdopdiehcmjhmgmeojageodobmmphngh</code></p>
+          <div class="card-actions">
+            <a class="btn btn-success" href="../downloads/a-motivac.crx">Установить в один клик</a>
+            <a class="btn" href="../downloads/a-motivac-v1.3.zip" download>Скачать .zip</a>
+            <a class="btn" href="../a-motivac/">Подробнее</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-head">
+            <div class="card-icon"><img src="../assets/a-motivac-grey.png" alt=""></div>
+            <div><h3>A.MOTIVAC</h3><span class="badge">v1.3</span></div>
+          </div>
+          <p>ID: <code>ckmfnfafacifdnkhijaidbbknlneogdj</code></p>
+          <div class="card-actions">
+            <a class="btn btn-success" href="../downloads/a-motivac-grey.crx">Установить в один клик</a>
+            <a class="btn" href="../downloads/a-motivac-grey-v1.3.zip" download>Скачать .zip</a>
+            <a class="btn" href="../a-motivac-grey/">Подробнее</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-head">
+            <div class="card-icon"><img src="../assets/a-oplat-grey.png" alt=""></div>
+            <div><h3>A.OPLAT</h3><span class="badge">v1.1</span></div>
+          </div>
+          <p>ID: <code>menapjdenagdpanhbnbpgmhodpbkpmao</code></p>
+          <div class="card-actions">
+            <a class="btn btn-success" href="../downloads/a-oplat-grey.crx">Установить в один клик</a>
+            <a class="btn" href="../downloads/a-oplat-grey-v1.1.zip" download>Скачать .zip</a>
+            <a class="btn" href="../a-oplat-grey/">Подробнее</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-head">
+            <div class="card-icon"><img src="../assets/a-oplat.png" alt=""></div>
+            <div><h3>A.OPLAT</h3><span class="badge">v1.1</span></div>
+          </div>
+          <p>ID: <code>eglhcjgniigdanednhkaiakkjcpodkfg</code></p>
+          <div class="card-actions">
+            <a class="btn btn-success" href="../downloads/a-oplat.crx">Установить в один клик</a>
+            <a class="btn" href="../downloads/a-oplat-v1.1.zip" download>Скачать .zip</a>
+            <a class="btn" href="../a-oplat/">Подробнее</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-head">
+            <div class="card-icon"><img src="../assets/ozon-wb-helper.png" alt=""></div>
+            <div><h3>Ozon & Wildberries Helper</h3><span class="badge">v2.1.0</span></div>
+          </div>
+          <p>ID: <code>pppnogmdbdgepnaeoodklllnianapeeb</code></p>
+          <div class="card-actions">
+            <a class="btn btn-success" href="../downloads/ozon-wb-helper.crx">Установить в один клик</a>
+            <a class="btn" href="../downloads/ozon-wb-helper-v2.1.0.zip" download>Скачать .zip</a>
+            <a class="btn" href="../ozon-wb-helper/">Подробнее</a>
+          </div>
+        </article>
+    </div>
 
-    <h2>Технические данные</h2>
+    <h2>ID расширений (для политик)</h2>
     <ul class="feature-list">
-      <li><strong>ID расширения:</strong> <code>cdoacknmgmgemgkhjemnlcmebofaldnb</code></li>
-      <li><strong>Файл расширения:</strong> <a href="../downloads/yen-to-rub.crx">yen-to-rub.crx</a> (CRX3, подписан RSA-2048)</li>
-      <li><strong>Манифест обновлений:</strong> <a href="../downloads/update.xml">update.xml</a></li>
-      <li><strong>Политика разрешения источников:</strong> <a href="install-policy.reg">install-policy.reg</a></li>
-      <li><strong>Политики для управляемых ПК:</strong> <a href="install-policy-forcelist.reg">install-policy-forcelist.reg</a></li>
-      <li><strong>Скрипты:</strong> <a href="APPLY-POLICY.bat">APPLY-POLICY.bat</a> и <a href="CLEAN-POLICY.bat">CLEAN-POLICY.bat</a></li>
-      <li><strong>Ветки реестра:</strong> HKCU, HKLM (64-бит) и HKLM <code>WOW6432Node</code> (32-бит) для Яндекс Браузера, Chrome и Chromium</li>
+      <li><strong>Yen → RUB для DeepSeek:</strong> <code>cdoacknmgmgemgkhjemnlcmebofaldnb</code></li>
+      <li><strong>A.MOTIVAC:</strong> <code>fdopdiehcmjhmgmeojageodobmmphngh</code></li>
+      <li><strong>A.MOTIVAC:</strong> <code>ckmfnfafacifdnkhijaidbbknlneogdj</code></li>
+      <li><strong>A.OPLAT:</strong> <code>menapjdenagdpanhbnbpgmhodpbkpmao</code></li>
+      <li><strong>A.OPLAT:</strong> <code>eglhcjgniigdanednhkaiakkjcpodkfg</code></li>
+      <li><strong>Ozon & Wildberries Helper:</strong> <code>pppnogmdbdgepnaeoodklllnianapeeb</code></li>
     </ul>
 
     <h2>Если что-то не работает</h2>
     <ul class="feature-list">
       <li><strong>Политика «не задана»</strong> — почти всегда неверный формат: нужен подраздел <code>ExtensionInstallSources</code> с нумерованными значениями <code>REG_SZ</code>, а не <code>REG_MULTI_SZ</code>. Либо браузер не был перезапущен полностью.</li>
-      <li><strong>«Сайт не доверенный» в Яндекс Браузере</strong> — это встроенное ограничение на установку сторонних расширений с сайтов, политикой оно не снимается. Используйте вариант 2 (перетаскивание архива на <code>browser://tune</code>) или Chrome.</li>
-      <li><strong>«Компьютер не является корпоративным»</strong> — <code>ExtensionInstallForcelist</code> не применяется на неуправляемых ПК; это ожидаемо.</li>
-      <li><strong>Windows блокирует скачанный .bat</strong> — файл скачан из интернета, поэтому система помечает его; нажмите «Подробнее» → «Выполнить в любом случае» либо снимите блокировку в свойствах файла.</li>
+      <li><strong>«Сайт не доверенный» в Яндекс Браузере</strong> — встроенное ограничение на сторонние расширения, политикой не снимается. Используйте Chrome или установку через <code>browser://tune</code>.</li>
+      <li><strong>«Компьютер не является корпоративным»</strong> — <code>ExtensionInstallForcelist</code> не применяется на неуправляемых ПК, это ожидаемо.</li>
+      <li><strong>Windows блокирует скачанный .bat</strong> — «Подробнее» → «Выполнить в любом случае».</li>
       <li><strong>Как откатить всё</strong> — запустите <a href="CLEAN-POLICY.bat">CLEAN-POLICY.bat</a> от имени администратора и перезапустите браузер.</li>
     </ul>
 
-    <p class="note">
-      Внимание: файлы <code>.reg</code> и <code>.bat</code> изменяют системные политики браузеров. Применяйте их только на своих
-      компьютерах. Приватный ключ подписи расширения хранится локально у владельца и никогда не публикуется — иначе кто-то
-      сможет выпустить расширение с тем же ID.
-    </p>
+    <p class="note">Файлы <code>.reg</code> и <code>.bat</code> изменяют системные политики браузеров — применяйте их только на своих компьютерах. Приватные ключи подписи хранятся локально и никогда не публикуются.</p>
 
   </div>
 </main>
-
 <footer class="site-footer">
   <div class="wrap">
     <span>© <span id="year">2026</span> Q Marketplace</span>
-    <a href="../">Все расширения</a>
+    <a href="https://github.com/QuasaaQ" target="_blank" rel="noopener">github.com/QuasaaQ</a>
   </div>
 </footer>
 

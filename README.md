@@ -1,36 +1,55 @@
-# Q Marketplace (quasaaq.github.io/marketplace)
+# Q Marketplace — сайт (GitHub Pages)
 
-Витрина расширений для Chrome и Яндекс Браузера. Сайт публикуется через **GitHub Pages**
-из этого репозитория (`marketplace`) и доступен по адресу:
+Витрина расширений для Chrome и Яндекс Браузера.
+
+**Адрес сайта:** https://quasaaq.github.io/marketplace/
+
+## Важно: сайт генерируется автоматически
+
+Файлы `index.html`, `install/index.html`, `<slug>/index.html`, содержимое `downloads/`, `assets/<slug>.png`
+и файлы политик в `install/` **создаются сборщиком** из проекта `Q.Marketplace`:
 
 ```
-https://quasaaq.github.io/marketplace/
+Q.Marketplace\
+  extensions.json        реестр расширений (пути к проектам)
+  Q.Marketplace.bat      GUI: выбор проектов, сборка, публикация
+  build.bat              сборка и публикация без GUI
+  tools\
+    common.ps1           поиск релизов, выбор самой свежей версии
+    templates.ps1        генерация страниц сайта
+    build.ps1            сборка: ZIP, CRX, update.xml, страницы, политики
+    gui.ps1              интерфейс
+    make-policy-reg.ps1  генерация .reg и .bat политик
+  keys\                  приватные ключи подписи (в GitHub НЕ попадают)
+  site\                  этот репозиторий (публикуется на Pages)
 ```
 
-## Структура сайта
+Вручную править сгенерированные файлы **не нужно** — при следующей сборке они перезапишутся.
+Ручные файлы здесь: `assets/style.css`, `assets/icon.svg`, `404.html`, `.nojekyll`.
+
+## Структура
 
 ```
-index.html                 — главная страница (витрина всех расширений)
+index.html                 — главная (витрина), генерируется
 404.html                   — страница «не найдено»
-assets/style.css           — общие стили
-assets/icon.svg            — иконка сайта (favicon)
-downloads/                 — ZIP, .crx и update.xml
-install/index.html         — инструкция по установке + .reg и .bat
-<имя-расширения>/index.html— отдельная страница расширения
-.nojekyll                  — отключает обработку Jekyll (файлы отдаются как есть)
+assets/style.css           — общие стили (правится вручную)
+assets/icon.svg            — иконка сайта (правится вручную)
+assets/<slug>.png          — иконки расширений, копируются сборщиком
+downloads/<slug>.crx       — подписанные расширения
+downloads/<slug>-v<ver>.zip— архивы для установки в Яндекс Браузере
+downloads/<slug>-update.xml— манифесты обновлений
+install/index.html         — инструкция по установке, генерируется
+install/install-policy.reg — политики для Chrome (Sources + Allowlist)
+install/install-policy-forcelist.reg — то же + автоустановка (управляемые ПК)
+install/APPLY-POLICY.bat   — применение политик
+install/CLEAN-POLICY.bat   — откат политик
+<slug>/index.html          — страница расширения, генерируется
+.nojekyll                  — отключает обработку Jekyll
 ```
-
-## Как добавить новое расширение
-
-1. Соберите ZIP расширения (файлы в корне архива, включая `manifest.json`) и положите в `downloads/`.
-2. Создайте `my-ext/index.html` (шаблон — `yen-to-rub/index.html`).
-3. Добавьте карточку в секцию `#extensions` в `index.html`.
-4. Закоммитьте и запушьте — GitHub Pages обновит сайт через 30–60 секунд.
 
 ## Формат политик (важно)
 
-Списковые политики Chromium в реестре Windows работают как **подраздел с нумерованными
-значениями `REG_SZ`**, а не как `REG_MULTI_SZ`:
+Списковые политики Chromium в реестре работают как **подраздел с нумерованными значениями `REG_SZ`**:
 
 ```
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\ExtensionInstallSources]
@@ -38,49 +57,22 @@ install/index.html         — инструкция по установке + .r
 "2"="https://quasaaq.github.io/*"
 ```
 
-`REG_MULTI_SZ` браузеры не читают: политика выглядит как «не задана», хотя значение в реестре есть.
+`REG_MULTI_SZ` браузеры не читают: политика выглядит как «не заadaна», хотя значение в реестре есть.
 
-## Генерация .reg
+## Способы установки
 
-`tools\make-policy-reg.ps1` (в корне проекта, вне репозитория) создаёт:
+| Браузер | Способ | Результат |
+|---|---|---|
+| Chrome | политика `install-policy.reg` → кнопка «Установить в один клик» | работает, обновления автоматически |
+| Яндекс Браузер | скачать `.zip` → `browser://tune` → перетащить архив | работает, раздел «Из других источников» |
+| Управляемые ПК | `install-policy-forcelist.reg` (`ExtensionInstallForcelist`) | автоустановка без действий пользователя |
 
-- `site/install/install-policy.reg` — `ExtensionInstallSources` + `ExtensionInstallAllowlist`;
-- `site/install/install-policy-forcelist.reg` — то же + `ExtensionInstallForcelist`
-  (работает только на управляемых/корпоративных ПК).
+Ограничения, проверенные на практике:
 
-Ветки реестра: `HKCU`, `HKLM` (64-бит) и `HKLM\WOW6432Node` (32-бит)
-для `YandexBrowser`, `Google\Chrome`, `Chromium`.
-
-## Сборка .crx и update.xml
-
-Node.js, пакет `crx3` в `.tools/`:
-
-```
-node .tools\node_modules\crx3\bin\crx3.js -p "keys\yen-to-rub.pem" ^
-  -o "site\downloads\yen-to-rub.crx" -x "site\downloads\update.xml" ^
-  --appVersion 1.0.0 ^
-  --crxURL "https://quasaaq.github.io/marketplace/downloads/yen-to-rub.crx" app
-```
-
-Приватный ключ `keys\yen-to-rub.pem` — **вне репозитория**, в GitHub не попадает.
-При новой версии увеличьте `version` в `app/manifest.json`, пересоберите `.crx`
-тем же ключом и обновите `--appVersion`.
-
-## Результаты проверки на реальных браузерах
-
-| Браузер | Результат |
-|---|---|
-| Chrome 152 | Установка в один клик с сайта после применения `install-policy.reg` — **работает** |
-| Яндекс Браузер 26.8 | Политика `ExtensionInstallSources` читается (статус ОК), но установку с сайта блокирует: сторонние расширения разрешены только на корпоративных ПК. Рабочий вариант — перетащить ZIP-архив в окно на странице `browser://tune`; расширение появится в разделе «Из других источников» |
-| `ExtensionInstallForcelist` | На не-корпоративном ПК отклоняется с сообщением «компьютер не является корпоративным» |
-
-## Установка в Яндекс Браузере
-
-1. Скачать `downloads/yen-to-rub-v1.0.0.zip` (распаковывать не нужно).
-2. Открыть `browser://tune`.
-3. Перетащить архив в окно Браузера.
-4. Расширение появится в разделе «Из других источников». Установка выполняется один раз.
+- Яндекс Браузер блокирует установку сторонних расширений с сайтов на не-корпоративных ПК — политикой не снимается.
+- `ExtensionInstallForcelist` на не-корпоративном ПК отклоняется с сообщением «компьютер не является корпоративным».
 
 ## Публикация
 
 GitHub Pages включён для ветки `main`, папка `/ (root)`.
+Публикация выполняется кнопкой «Собрать и опубликовать» в GUI или файлом `build.bat`.
