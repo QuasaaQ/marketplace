@@ -10,16 +10,15 @@ if errorlevel 1 (
   exit /b
 )
 
-for %%R in ("HKLM\SOFTWARE\Policies" "HKLM\SOFTWARE\WOW6432Node\Policies" "HKCU\SOFTWARE\Policies") do (
-  for %%V in ("YandexBrowser" "Google\Chrome" "Chromium") do (
-    reg delete "%%~R\%%~V" /v ExtensionInstallSources /f >nul 2>&1
-    reg delete "%%~R\%%~V" /v ExtensionInstallAllowlist /f >nul 2>&1
-    reg delete "%%~R\%%~V" /v ExtensionInstallForcelist /f >nul 2>&1
-    reg delete "%%~R\%%~V" /v ShowHomeButton /f >nul 2>&1
-    reg delete "%%~R\%%~V\ExtensionInstallSources" /f >nul 2>&1
-    reg delete "%%~R\%%~V\ExtensionInstallAllowlist" /f >nul 2>&1
-    reg delete "%%~R\%%~V\ExtensionInstallForcelist" /f >nul 2>&1
-  )
+for %%R in ("HKEY_CURRENT_USER\SOFTWARE\Policies\YandexBrowser" "HKEY_CURRENT_USER\SOFTWARE\Policies\Google\Chrome" "HKEY_CURRENT_USER\SOFTWARE\Policies\Chromium" "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\YandexBrowser" "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\YandexBrowser" "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome" "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Google\Chrome" "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Chromium" "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Chromium") do (
+  reg delete "%%~R" /v ExtensionSettings /f >nul 2>&1
+  reg delete "%%~R" /v ShowHomeButton /f >nul 2>&1
+  reg delete "%%~R" /v ExtensionInstallSources /f >nul 2>&1
+  reg delete "%%~R" /v ExtensionInstallAllowlist /f >nul 2>&1
+  reg delete "%%~R" /v ExtensionInstallForcelist /f >nul 2>&1
+  reg delete "%%~R\ExtensionInstallSources" /f >nul 2>&1
+  reg delete "%%~R\ExtensionInstallAllowlist" /f >nul 2>&1
+  reg delete "%%~R\ExtensionInstallForcelist" /f >nul 2>&1
 )
 
 echo Policies removed. Restart the browser.

@@ -1,6 +1,6 @@
 @echo off
 setlocal enabledelayedexpansion
-title APPLY-POLICY - allow one-click extension install
+title APPLY-CORPORATE-POLICY - force install on managed PCs
 chcp 65001 >nul
 
 net session >nul 2>&1
@@ -10,8 +10,11 @@ if errorlevel 1 (
   exit /b
 )
 
-echo [1/3] Clearing the neutralized ExtensionSettings value...
-powershell -NoProfile -ExecutionPolicy Bypass -Command "foreach($r in @('HKCU:\SOFTWARE\Policies\YandexBrowser','HKCU:\SOFTWARE\Policies\Google\Chrome','HKCU:\SOFTWARE\Policies\Chromium','HKLM:\SOFTWARE\Policies\YandexBrowser','HKLM:\SOFTWARE\Policies\Google\Chrome','HKLM:\SOFTWARE\Policies\Chromium','HKLM:\SOFTWARE\WOW6432Node\Policies\YandexBrowser','HKLM:\SOFTWARE\WOW6432Node\Policies\Google\Chrome','HKLM:\SOFTWARE\WOW6432Node\Policies\Chromium')){ Remove-ItemProperty -Path $r -Name 'ExtensionSettings' -ErrorAction SilentlyContinue }"
+set "QMPOL=%TEMP%\q-marketplace-extension-settings.json"
+> "%QMPOL%" echo {"fdopdiehcmjhmgmeojageodobmmphngh":{"installation_mode":"force_installed","update_url":"https://quasaaq.github.io/marketplace/downloads/a-motivac-update.xml","override_update_url":true},"ckmfnfafacifdnkhijaidbbknlneogdj":{"installation_mode":"force_installed","update_url":"https://quasaaq.github.io/marketplace/downloads/a-motivac-grey-update.xml","override_update_url":true},"menapjdenagdpanhbnbpgmhodpbkpmao":{"installation_mode":"force_installed","update_url":"https://quasaaq.github.io/marketplace/downloads/a-oplat-grey-update.xml","override_update_url":true},"eglhcjgniigdanednhkaiakkjcpodkfg":{"installation_mode":"force_installed","update_url":"https://quasaaq.github.io/marketplace/downloads/a-oplat-update.xml","override_update_url":true},"pppnogmdbdgepnaeoodklllnianapeeb":{"installation_mode":"force_installed","update_url":"https://quasaaq.github.io/marketplace/downloads/ozon-wb-helper-update.xml","override_update_url":true},"cdoacknmgmgemgkhjemnlcmebofaldnb":{"installation_mode":"force_installed","update_url":"https://quasaaq.github.io/marketplace/downloads/yen-to-rub-update.xml","override_update_url":true}}
+echo [1/3] Writing ExtensionSettings (force_installed, managed PC)...
+powershell -NoProfile -ExecutionPolicy Bypass -Command "foreach($r in @('HKCU:\SOFTWARE\Policies\YandexBrowser','HKCU:\SOFTWARE\Policies\Google\Chrome','HKCU:\SOFTWARE\Policies\Chromium','HKLM:\SOFTWARE\Policies\YandexBrowser','HKLM:\SOFTWARE\Policies\Google\Chrome','HKLM:\SOFTWARE\Policies\Chromium','HKLM:\SOFTWARE\WOW6432Node\Policies\YandexBrowser','HKLM:\SOFTWARE\WOW6432Node\Policies\Google\Chrome','HKLM:\SOFTWARE\WOW6432Node\Policies\Chromium')){ if(-not(Test-Path -LiteralPath $r)){ New-Item -Path $r -Force | Out-Null }; New-ItemProperty -Path $r -Name 'ExtensionSettings' -Value (Get-Content -Raw -LiteralPath $env:QMPOL) -PropertyType String -Force | Out-Null; Write-Host ('  policy: ' + $r) }"
+if errorlevel 1 goto fail
 
 echo [2/3] Writing install sources and allowlist...
 for %%R in ("HKEY_CURRENT_USER\SOFTWARE\Policies\YandexBrowser" "HKEY_CURRENT_USER\SOFTWARE\Policies\Google\Chrome" "HKEY_CURRENT_USER\SOFTWARE\Policies\Chromium" "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\YandexBrowser" "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\YandexBrowser" "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome" "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Google\Chrome" "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Chromium" "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Chromium") do (
