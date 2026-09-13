@@ -37,6 +37,7 @@ assets/icon.svg            - иконка сайта (правится вруч�
 assets/<slug>.png          - иконки расширений, копируются сборщиком
 downloads/<slug>.crx       - подписанные расширения (они же перетаскиваются в browser://tune)
 downloads/<slug>-v<ver>.zip- ZIP-архивы расширений
+downloads/install-<slug>.bat - установщик: скачивает crx и регистрирует его в HKCU (без прав админа)
 downloads/<slug>-update.xml- манифесты обновлений
 install/index.html         - инструкция по установке, генерируется
 install/install-policy.reg - политики для Chrome (Sources + Allowlist)
