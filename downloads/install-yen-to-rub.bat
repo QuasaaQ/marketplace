@@ -5,7 +5,7 @@ title Install yen-to-rub for Chrome and Yandex Browser
 echo ============================================================
 echo   Extension installer
 echo   Package : yen-to-rub
-echo   Version : 1.3
+echo   Version : 1.4
 echo   ID      : cdoacknmgmgemgkhjemnlcmebofaldnb
 echo ============================================================
 echo.
@@ -20,7 +20,7 @@ echo.
 pause
 
 set "PKG=yen-to-rub"
-set "VER=1.3"
+set "VER=1.4"
 set "ID=cdoacknmgmgemgkhjemnlcmebofaldnb"
 set "CRX_DIR=%LOCALAPPDATA%\Q.Marketplace"
 set "CRX_FILE=%CRX_DIR%\%PKG%.crx"

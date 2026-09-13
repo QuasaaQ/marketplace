@@ -42,7 +42,7 @@
       <li>Нажмите <strong>«Установить в один клик»</strong> у нужного расширения ниже.</li>
     </ol>
 
-    <h2>Яндекс Браузер - установщик или перетаскивание</h2>
+    <h2>Яндекс Браузер (стандартная версия) - установщик или перетаскивание</h2>
     <p class="lead">Яндекс Браузер не разрешает ставить сторонние расширения с сайтов и отвечает «Невозможно добавить приложение, расширение или пользовательский скрипт с этого сайта». Работают два способа.</p>
 
     <h3 class="section-title" style="font-size:19px;margin:26px 0 6px">Способ 1 - установщик, без прав администратора</h3>
@@ -113,7 +113,7 @@
       <article class="card">
         <div class="card-head">
           <div class="card-icon"><img src="../assets/yen-to-rub.png" alt=""></div>
-          <div><h3>Yen → RUB для DeepSeek</h3><span class="badge">v1.3</span></div>
+          <div><h3>Yen → RUB для DeepSeek</h3><span class="badge">v1.4</span></div>
         </div>
         <p>ID: <code>cdoacknmgmgemgkhjemnlcmebofaldnb</code></p>
         <div class="card-actions">
@@ -191,7 +191,7 @@
     <h2>Если что-то не работает</h2>
     <ul class="feature-list">
       <li><strong>Политика «не задана»</strong> - почти всегда неверный формат: нужен подраздел <code>ExtensionInstallSources</code> с нумерованными значениями <code>REG_SZ</code>, а не <code>REG_MULTI_SZ</code>. Либо браузер не был перезапущен полностью.</li>
-      <li><strong>«Сайт не доверенный» в Яндекс Браузере</strong> - встроенное ограничение на сторонние расширения в обычной версии, политикой не снимается. Используйте Chrome, <a href="https://browser.yandex.ru/beta" target="_blank" rel="noopener">Яндекс Браузер Бета</a> (там работает один клик) или установку через <code>browser://tune</code>.</li>
+      <li><strong>«Сайт не доверенный» в Яндекс Браузере</strong> - встроенное ограничение на сторонние расширения в стандартной версии, политикой не снимается. Используйте Chrome, <a href="https://browser.yandex.ru/beta" target="_blank" rel="noopener">Яндекс Браузер Бета</a> (там работает один клик) или установку через <code>browser://tune</code>.</li>
       <li><strong>«Компьютер не является корпоративным»</strong> - <code>ExtensionInstallForcelist</code> не применяется на неуправляемых ПК, это ожидаемо.</li>
       <li><strong>Windows блокирует скачанный .bat</strong> - «Подробнее» → «Выполнить в любом случае».</li>
       <li><strong>Как откатить всё</strong> - запустите <a href="CLEAN-POLICY.bat">CLEAN-POLICY.bat</a> от имени администратора и перезапустите браузер.</li>
