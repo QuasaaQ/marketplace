@@ -20,12 +20,12 @@ for %%R in ("HKLM\SOFTWARE\Policies" "HKLM\SOFTWARE\WOW6432Node\Policies" "HKCU\
 
     reg add "%%~R\%%~V\ExtensionInstallSources" /v 1 /t REG_SZ /d "https://quasaaq.github.io/marketplace/*" /f >nul
     reg add "%%~R\%%~V\ExtensionInstallSources" /v 2 /t REG_SZ /d "https://quasaaq.github.io/*" /f >nul
-    reg add "%%~R\%%~V\ExtensionInstallAllowlist" /v 1 /t REG_SZ /d "cdoacknmgmgemgkhjemnlcmebofaldnb" /f >nul
-    reg add "%%~R\%%~V\ExtensionInstallAllowlist" /v 2 /t REG_SZ /d "fdopdiehcmjhmgmeojageodobmmphngh" /f >nul
-    reg add "%%~R\%%~V\ExtensionInstallAllowlist" /v 3 /t REG_SZ /d "ckmfnfafacifdnkhijaidbbknlneogdj" /f >nul
-    reg add "%%~R\%%~V\ExtensionInstallAllowlist" /v 4 /t REG_SZ /d "menapjdenagdpanhbnbpgmhodpbkpmao" /f >nul
-    reg add "%%~R\%%~V\ExtensionInstallAllowlist" /v 5 /t REG_SZ /d "eglhcjgniigdanednhkaiakkjcpodkfg" /f >nul
-    reg add "%%~R\%%~V\ExtensionInstallAllowlist" /v 6 /t REG_SZ /d "pppnogmdbdgepnaeoodklllnianapeeb" /f >nul
+    reg add "%%~R\%%~V\ExtensionInstallAllowlist" /v 1 /t REG_SZ /d "fdopdiehcmjhmgmeojageodobmmphngh" /f >nul
+    reg add "%%~R\%%~V\ExtensionInstallAllowlist" /v 2 /t REG_SZ /d "ckmfnfafacifdnkhijaidbbknlneogdj" /f >nul
+    reg add "%%~R\%%~V\ExtensionInstallAllowlist" /v 3 /t REG_SZ /d "menapjdenagdpanhbnbpgmhodpbkpmao" /f >nul
+    reg add "%%~R\%%~V\ExtensionInstallAllowlist" /v 4 /t REG_SZ /d "eglhcjgniigdanednhkaiakkjcpodkfg" /f >nul
+    reg add "%%~R\%%~V\ExtensionInstallAllowlist" /v 5 /t REG_SZ /d "pppnogmdbdgepnaeoodklllnianapeeb" /f >nul
+    reg add "%%~R\%%~V\ExtensionInstallAllowlist" /v 6 /t REG_SZ /d "cdoacknmgmgemgkhjemnlcmebofaldnb" /f >nul
   )
 )
 
