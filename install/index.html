@@ -34,7 +34,7 @@
 
     <h2>Шаг 1. Один раз разрешить установку с сайта</h2>
     <ol class="steps">
-      <li>Скачайте файл политики: <a href="install-policy-sources.reg" download><code>install-policy-sources.reg</code></a>.</li>
+      <li>Скачайте файл политики: <a href="install-policy-all.reg" download><code>install-policy-all.reg</code></a> — в нём сразу оба правила (клик по .crx и автоустановка).</li>
       <li>Кликните по нему правой кнопкой → <strong>Слияние</strong> (или запустите от имени администратора). Подтвердите запрос UAC и добавление данных в реестр.</li>
       <li><strong>Полностью закройте браузер</strong> (все окна) и откройте заново — политики читаются при запуске.</li>
       <li>Проверить, что политика применилась: откройте <code>browser://policy</code> (Chrome: <code>chrome://policy</code>) и найдите <code>ExtensionInstallSources</code>.</li>
@@ -79,6 +79,8 @@
       <li><strong>Манифест обновлений:</strong> <a href="../downloads/update.xml">update.xml</a></li>
       <li><strong>Политика разрешения источников:</strong> <a href="install-policy-sources.reg">install-policy-sources.reg</a></li>
       <li><strong>Политика автоустановки:</strong> <a href="install-policy-forcelist.reg">install-policy-forcelist.reg</a></li>
+      <li><strong>Оба правила в одном файле:</strong> <a href="install-policy-all.reg">install-policy-all.reg</a></li>
+      <li><strong>Ветки реестра:</strong> HKCU, HKLM (64-бит) и HKLM <code>WOW6432Node</code> (32-бит) для Яндекс Браузера, Chrome и Chromium</li>
     </ul>
 
     <h2>Если что-то не работает</h2>
