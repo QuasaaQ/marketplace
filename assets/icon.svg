@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg width="800px" height="800px" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M0.850708 0L5.05071 7H3V9H6.50001V11H3V13H6.50001V16H9.50001V13H13V11H9.50001V9H13V7H10.9493L15.1493 0H11.6507L7.99999 6.08452L4.34928 0H0.850708Z" fill="#000000"/>
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="qmark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4f8cff"/>
+      <stop offset="1" stop-color="#7b5cff"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="18" fill="url(#qmark)"/>
+  <text x="32" y="33" text-anchor="middle" dominant-baseline="central"
+        font-family="Segoe UI, system-ui, Arial, Helvetica, sans-serif"
+        font-size="40" font-weight="800" fill="#ffffff">Q</text>
 </svg>
