@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Установка в один клик — Yen → RUB для DeepSeek</title>
-  <meta name="description" content="Установка расширения Yen → RUB в один клик с сайта через политику браузера (ExtensionInstallSources).">
+  <title>Установка — Yen → RUB для DeepSeek</title>
+  <meta name="description" content="Установка расширения Yen → RUB: установка в один клик с сайта через политику браузера, ручная установка и варианты для парка ПК.">
   <link rel="icon" href="../assets/icon.svg">
   <link rel="stylesheet" href="../assets/style.css">
 </head>
@@ -23,24 +23,9 @@
 
     <a class="crumb" href="../">← Все расширения</a>
 
-    <h1>Установка в один клик</h1>
-    <p class="lead">Этот способ разрешает браузеру ставить расширение <strong>прямо с этого сайта</strong>, без ручного «Загрузить распакованное». Работает для Яндекс Браузера, Chrome и Chromium на ваших рабочих ПК.</p>
+    <h1>Установка расширения</h1>
+    <p class="lead">Способ установки зависит от браузера. Ниже — проверенные на практике варианты, от «один клик с сайта» до ручной установки.</p>
 
-    <p class="note">
-      Ограничение браузеров: установка расширений с произвольных сайтов запрещена с 2012 года.
-      Разрешить её можно только политикой, которая один раз настраивается на компьютере (нужны права администратора).
-      После этого установка — действительно в один клик. Обновления расширения будут приходить автоматически.
-    </p>
-
-    <h2>Шаг 1. Один раз разрешить установку с сайта</h2>
-    <ol class="steps">
-      <li>Скачайте файл политики: <a href="install-policy-all.reg" download><code>install-policy-all.reg</code></a> — в нём сразу оба правила (клик по .crx и автоустановка).</li>
-      <li>Кликните по нему правой кнопкой → <strong>Слияние</strong> (или запустите от имени администратора). Подтвердите запрос UAC и добавление данных в реестр.</li>
-      <li><strong>Полностью закройте браузер</strong> (все окна) и откройте заново — политики читаются при запуске.</li>
-      <li>Проверить, что политика применилась: откройте <code>browser://policy</code> (Chrome: <code>chrome://policy</code>) и найдите <code>ExtensionInstallSources</code>.</li>
-    </ol>
-
-    <h2>Шаг 2. Установить расширение</h2>
     <div class="download-box">
       <div class="meta">
         <strong>Yen → RUB для DeepSeek</strong>
@@ -48,53 +33,117 @@
       </div>
       <div class="card-actions">
         <a class="btn btn-success" href="../downloads/yen-to-rub.crx">Установить в один клик</a>
+        <a class="btn" href="../downloads/yen-to-rub-v1.0.0.zip" download>Скачать .zip</a>
       </div>
     </div>
+
+    <h2>Вариант 1. Chrome — установка в один клик (работает)</h2>
+    <p class="lead">Chrome позволяет ставить расширение прямо с этого сайта, если один раз разрешить установку политикой. Обновления потом приходят автоматически.</p>
+
     <ol class="steps">
-      <li>Нажмите кнопку <strong>«Установить в один клик»</strong> выше.</li>
-      <li>Браузер покажет запрос на установку — подтвердите <strong>Добавить расширение</strong>.</li>
-      <li>Готово: расширение появится на странице <code>browser://extensions</code> и начнёт работать на platform.deepseek.com.</li>
+      <li>Скачайте файл политики: <a href="install-policy.reg" download><code>install-policy.reg</code></a>.</li>
+      <li>Нажмите по нему правой кнопкой → <strong>Слияние</strong>, согласитесь на запрос UAC и добавление данных в реестр.</li>
+      <li><strong>Полностью закройте Chrome</strong> (все окна; проверьте, что в трее не осталось процессов) и запустите заново.</li>
+      <li>Проверьте: <code>chrome://policy</code> → включите «Показывать не заданные политики» → найдите <code>ExtensionInstallSources</code> со статусом <strong>ОК</strong>.</li>
+      <li>Нажмите <strong>«Установить в один клик»</strong> выше и подтвердите добавление расширения.</li>
     </ol>
 
-    <h2>Вариант без кликов: автоматическая установка</h2>
-    <p class="lead">Если нужно развернуть расширение сразу на нескольких ПК, удобнее форсированная установка: браузер сам скачает и поставит расширение, а затем будет обновлять его.</p>
+    <p class="note">
+      Ключевая деталь: списковые политики в реестре должны храниться как <strong>подраздел с нумерованными значениями</strong>
+      (<code>ExtensionInstallSources</code> → <code>1</code>, <code>2</code>, … типа <code>REG_SZ</code>). Формат <code>REG_MULTI_SZ</code>
+      браузеры не читают, и политика при этом выглядит как «не задана».
+    </p>
+
+    <h2>Вариант 2. Яндекс Браузер — установка вручную</h2>
+    <p class="lead">
+      Яндекс Браузер блокирует сторонние расширения на компьютерах, не входящих в организацию: он разрешает
+      автоматическую установку только расширений из интернет-магазина. Политикой <code>ExtensionInstallSources</code>
+      это ограничение не снимается — браузер всё равно пишет, что источник не является доверенным.
+    </p>
+
+    <ol class="steps">
+      <li>Скачайте <a href="../downloads/yen-to-rub-v1.0.0.zip">ZIP-архив</a> и распакуйте его в постоянную папку, например <code>Документы\Extensions\yen-to-rub</code>.</li>
+      <li>Откройте <code>browser://extensions</code>.</li>
+      <li>Включите <strong>Режим разработчика</strong> в правом верхнем углу.</li>
+      <li>Нажмите <strong>Загрузить распакованное расширение</strong> и выберите папку с файлом <code>manifest.json</code>.</li>
+    </ol>
+
+    <p class="note">
+      Папку нельзя удалять или перемещать — браузер запускает расширение прямо из неё. Установка в режиме разработчика
+      выполняется один раз на компьютере и дальше не требует повторения.
+    </p>
+
+    <h2>Вариант 3. Автоустановка на парк ПК</h2>
+    <p class="lead">
+      Политика <code>ExtensionInstallForcelist</code> устанавливает расширение автоматически, вообще без действий пользователя.
+      Но она работает <strong>только на корпоративных (управляемых) компьютерах</strong>: входящих в домен, присоединённых к Azure AD
+      или управляемых через консоль. На обычном домашнем ПК Яндекс Браузер отклоняет такую установку с сообщением
+      «этот компьютер не является корпоративным».
+    </p>
+
     <div class="download-box">
       <div class="meta">
         <strong>install-policy-forcelist.reg</strong>
-        Автоустановка и автообновление по адресу update.xml
+        Политики Sources + Allowlist + Forcelist (для управляемых ПК)
       </div>
       <div class="card-actions">
         <a class="btn" href="install-policy-forcelist.reg" download>Скачать .reg</a>
       </div>
     </div>
+
+    <p class="lead">Для применения на нескольких компьютерах удобнее готовые скрипты (запускать от имени администратора, сами запрашивают права):</p>
+
+    <div class="download-box">
+      <div class="meta">
+        <strong>APPLY-POLICY.bat</strong>
+        Включает установку из нашего сайта (Sources + Allowlist) во всех браузерах
+      </div>
+      <div class="card-actions">
+        <a class="btn" href="APPLY-POLICY.bat" download>Скачать .bat</a>
+      </div>
+    </div>
+
+    <div class="download-box">
+      <div class="meta">
+        <strong>CLEAN-POLICY.bat</strong>
+        Полностью удаляет установленные политики (откат)
+      </div>
+      <div class="card-actions">
+        <a class="btn" href="CLEAN-POLICY.bat" download>Скачать .bat</a>
+      </div>
+    </div>
+
+    <h2>Настройка курса</h2>
     <ol class="steps">
-      <li>Примените <code>install-policy-forcelist.reg</code> так же, как файл из шага 1.</li>
-      <li>Перезапустите браузер — расширение установится само.</li>
+      <li>Нажмите на иконку расширения в панели браузера — появится поле «Курс (₽ за 1 ¥)».</li>
+      <li>Введите значение, например <code>12.50</code> (значит 1 ¥ = 12,50 ₽), и нажмите <strong>Сохранить</strong>.</li>
+      <li>Откройте platform.deepseek.com — цены в рублях появятся рядом с ценами в юанях.</li>
     </ol>
 
     <h2>Технические данные</h2>
     <ul class="feature-list">
       <li><strong>ID расширения:</strong> <code>cdoacknmgmgemgkhjemnlcmebofaldnb</code></li>
-      <li><strong>Файл расширения:</strong> <a href="../downloads/yen-to-rub.crx">yen-to-rub.crx</a></li>
+      <li><strong>Файл расширения:</strong> <a href="../downloads/yen-to-rub.crx">yen-to-rub.crx</a> (CRX3, подписан RSA-2048)</li>
       <li><strong>Манифест обновлений:</strong> <a href="../downloads/update.xml">update.xml</a></li>
-      <li><strong>Политика разрешения источников:</strong> <a href="install-policy-sources.reg">install-policy-sources.reg</a></li>
-      <li><strong>Политика автоустановки:</strong> <a href="install-policy-forcelist.reg">install-policy-forcelist.reg</a></li>
-      <li><strong>Оба правила в одном файле:</strong> <a href="install-policy-all.reg">install-policy-all.reg</a></li>
+      <li><strong>Политика разрешения источников:</strong> <a href="install-policy.reg">install-policy.reg</a></li>
+      <li><strong>Политики для управляемых ПК:</strong> <a href="install-policy-forcelist.reg">install-policy-forcelist.reg</a></li>
+      <li><strong>Скрипты:</strong> <a href="APPLY-POLICY.bat">APPLY-POLICY.bat</a> и <a href="CLEAN-POLICY.bat">CLEAN-POLICY.bat</a></li>
       <li><strong>Ветки реестра:</strong> HKCU, HKLM (64-бит) и HKLM <code>WOW6432Node</code> (32-бит) для Яндекс Браузера, Chrome и Chromium</li>
     </ul>
 
     <h2>Если что-то не работает</h2>
     <ul class="feature-list">
-      <li><strong>Ошибка «CRX_REQUIRED_PROOF_MISSING»</strong> — политика не применилась. Проверьте <code>browser://policy</code> и перезапустите браузер полностью.</li>
-      <li><strong>Клик по кнопке просто скачивает файл</strong> — нет политики <code>ExtensionInstallSources</code> или домен указан с ошибкой.</li>
-      <li><strong>Политика не видна в списке</strong> — файл .reg не был применён (нужны права администратора) или браузер не перезапускался.</li>
-      <li><strong>Как убрать расширение</strong> — на странице <code>browser://extensions</code>; для отмены политик удалите соответствующее значение в <code>Regedit</code> и перезапустите браузер.</li>
+      <li><strong>Политика «не задана»</strong> — почти всегда неверный формат: нужен подраздел <code>ExtensionInstallSources</code> с нумерованными значениями <code>REG_SZ</code>, а не <code>REG_MULTI_SZ</code>. Либо браузер не был перезапущен полностью.</li>
+      <li><strong>«Сайт не доверенный» в Яндекс Браузере</strong> — это встроенное ограничение на сторонние расширения, политикой не снимается. Используйте Chrome или ручную установку (вариант 2).</li>
+      <li><strong>«Компьютер не является корпоративным»</strong> — <code>ExtensionInstallForcelist</code> не применяется на неуправляемых ПК; это ожидаемо.</li>
+      <li><strong>Windows блокирует скачанный .bat</strong> — файл скачан из интернета, поэтому система помечает его; нажмите «Подробнее» → «Выполнить в любом случае» либо снимите блокировку в свойствах файла.</li>
+      <li><strong>Как откатить всё</strong> — запустите <a href="CLEAN-POLICY.bat">CLEAN-POLICY.bat</a> от имени администратора и перезапустите браузер.</li>
     </ul>
 
     <p class="note">
-      Внимание: <code>.reg</code> изменяет системные политики браузера. Применяйте его только на своих ПК
-      и понимайте, что делаете. Приватный ключ подписи расширения хранится только локально у владельца
-      и никогда не публикуется — иначе кто-то сможет выпустить расширение с тем же ID.
+      Внимание: файлы <code>.reg</code> и <code>.bat</code> изменяют системные политики браузеров. Применяйте их только на своих
+      компьютерах. Приватный ключ подписи расширения хранится локально у владельца и никогда не публикуется — иначе кто-то
+      сможет выпустить расширение с тем же ID.
     </p>
 
   </div>
