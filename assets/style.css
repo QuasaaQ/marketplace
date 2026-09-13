@@ -1,4 +1,4 @@
-/* Q Marketplace - общие стили сайта (GitHub Pages) */
+/* Q.Marketplace - общие стили сайта (GitHub Pages) */
 
 :root {
   --bg: #0e1117;
@@ -53,7 +53,7 @@ img { max-width: 100%; display: block; }
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 4px;
   color: var(--text);
   font-weight: 700;
   font-size: 18px;

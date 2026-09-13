@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Установка расширений - Q Marketplace</title>
+  <title>Установка расширений - Q.Marketplace</title>
   <meta name="description" content="Установка расширений Chrome и Яндекс Браузера с сайта">
   <link rel="icon" href="../assets/icon.svg">
   <link rel="stylesheet" href="../assets/style.css">
@@ -11,7 +11,7 @@
 <body>
 
 <header class="site-header">
-  <a class="brand" href=".././"><span class="brand-mark"><svg viewBox="0 0 64 64" width="18" height="18" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round"><circle cx="32" cy="32" r="14"/><line x1="40" y1="40" x2="46" y2="46"/></g></svg></span> Marketplace</a>
+  <a class="brand" href=".././" aria-label="Q.Marketplace"><span class="brand-mark"><svg viewBox="0 0 64 64" width="18" height="18" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round"><circle cx="32" cy="32" r="14"/><line x1="40" y1="40" x2="46" y2="46"/></g></svg></span>.Marketplace</a>
   <nav class="site-nav">
     <a href="../#extensions">Расширения</a>
     <a href="../install/">Установка</a>
@@ -31,6 +31,15 @@
       <li><strong>Полностью закройте Chrome</strong> - все окна и фоновые процессы - и запустите заново.</li>
       <li>Проверьте: <code>chrome://policy</code> → <code>ExtensionInstallSources</code> должен быть в статусе <strong>ОК</strong>.</li>
       <li>Нажмите <strong>«Установить в один клик»</strong> у нужного расширения ниже и подтвердите установку.</li>
+    </ol>
+
+    <h2>Яндекс Браузер Бета - установка в один клик</h2>
+    <p class="lead"><a href="https://browser.yandex.ru/beta" target="_blank" rel="noopener">Бета-версия Яндекс Браузера</a> работает как Chrome: после применения политик расширения ставятся в один клик прямо с сайта, а обновления приходят автоматически.</p>
+    <ol class="steps">
+      <li>Установите <a href="https://browser.yandex.ru/beta" target="_blank" rel="noopener">бета-версию Яндекс Браузера</a>.</li>
+      <li>Скачайте <a href="install-policy.reg" download><code>install-policy.reg</code></a> и примените его от имени администратора.</li>
+      <li><strong>Полностью закройте браузер</strong> - окна и иконку в трее - и запустите заново.</li>
+      <li>Нажмите <strong>«Установить в один клик»</strong> у нужного расширения ниже.</li>
     </ol>
 
     <h2>Яндекс Браузер - установщик или перетаскивание</h2>
@@ -182,7 +191,7 @@
     <h2>Если что-то не работает</h2>
     <ul class="feature-list">
       <li><strong>Политика «не задана»</strong> - почти всегда неверный формат: нужен подраздел <code>ExtensionInstallSources</code> с нумерованными значениями <code>REG_SZ</code>, а не <code>REG_MULTI_SZ</code>. Либо браузер не был перезапущен полностью.</li>
-      <li><strong>«Сайт не доверенный» в Яндекс Браузере</strong> - встроенное ограничение на сторонние расширения, политикой не снимается. Используйте Chrome или установку через <code>browser://tune</code>.</li>
+      <li><strong>«Сайт не доверенный» в Яндекс Браузере</strong> - встроенное ограничение на сторонние расширения в обычной версии, политикой не снимается. Используйте Chrome, <a href="https://browser.yandex.ru/beta" target="_blank" rel="noopener">Яндекс Браузер Бета</a> (там работает один клик) или установку через <code>browser://tune</code>.</li>
       <li><strong>«Компьютер не является корпоративным»</strong> - <code>ExtensionInstallForcelist</code> не применяется на неуправляемых ПК, это ожидаемо.</li>
       <li><strong>Windows блокирует скачанный .bat</strong> - «Подробнее» → «Выполнить в любом случае».</li>
       <li><strong>Как откатить всё</strong> - запустите <a href="CLEAN-POLICY.bat">CLEAN-POLICY.bat</a> от имени администратора и перезапустите браузер.</li>
@@ -194,7 +203,7 @@
 </main>
 <footer class="site-footer">
   <div class="wrap">
-    <span>© <span id="year">2026</span> Q Marketplace</span>
+    <span>© <span id="year">2026</span> Q.Marketplace</span>
     <a href="https://github.com/QuasaaQ" target="_blank" rel="noopener">github.com/QuasaaQ</a>
   </div>
 </footer>

@@ -1,4 +1,4 @@
-# Q Marketplace - сайт (GitHub Pages)
+# Q.Marketplace - сайт (GitHub Pages)
 
 Витрина расширений для Chrome и Яндекс Браузера.
 
