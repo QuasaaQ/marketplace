@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Установка в один клик — Yen → RUB для DeepSeek</title>
+  <meta name="description" content="Установка расширения Yen → RUB в один клик с сайта через политику браузера (ExtensionInstallSources).">
+  <link rel="icon" href="../assets/icon.svg">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="../"><span class="brand-mark">Q</span> Marketplace</a>
+  <nav class="site-nav">
+    <a href="../">Все расширения</a>
+    <a href="https://github.com/QuasaaQ/marketplace" target="_blank" rel="noopener">GitHub</a>
+  </nav>
+</header>
+
+<main class="article">
+  <div class="wrap">
+
+    <a class="crumb" href="../">← Все расширения</a>
+
+    <h1>Установка в один клик</h1>
+    <p class="lead">Этот способ разрешает браузеру ставить расширение <strong>прямо с этого сайта</strong>, без ручного «Загрузить распакованное». Работает для Яндекс Браузера, Chrome и Chromium на ваших рабочих ПК.</p>
+
+    <p class="note">
+      Ограничение браузеров: установка расширений с произвольных сайтов запрещена с 2012 года.
+      Разрешить её можно только политикой, которая один раз настраивается на компьютере (нужны права администратора).
+      После этого установка — действительно в один клик. Обновления расширения будут приходить автоматически.
+    </p>
+
+    <h2>Шаг 1. Один раз разрешить установку с сайта</h2>
+    <ol class="steps">
+      <li>Скачайте файл политики: <a href="install-policy-sources.reg" download><code>install-policy-sources.reg</code></a>.</li>
+      <li>Кликните по нему правой кнопкой → <strong>Слияние</strong> (или запустите от имени администратора). Подтвердите запрос UAC и добавление данных в реестр.</li>
+      <li><strong>Полностью закройте браузер</strong> (все окна) и откройте заново — политики читаются при запуске.</li>
+      <li>Проверить, что политика применилась: откройте <code>browser://policy</code> (Chrome: <code>chrome://policy</code>) и найдите <code>ExtensionInstallSources</code>.</li>
+    </ol>
+
+    <h2>Шаг 2. Установить расширение</h2>
+    <div class="download-box">
+      <div class="meta">
+        <strong>Yen → RUB для DeepSeek</strong>
+        Версия 1.0.0 · ID: <code>cdoacknmgmgemgkhjemnlcmebofaldnb</code>
+      </div>
+      <div class="card-actions">
+        <a class="btn btn-success" href="../downloads/yen-to-rub.crx">Установить в один клик</a>
+      </div>
+    </div>
+    <ol class="steps">
+      <li>Нажмите кнопку <strong>«Установить в один клик»</strong> выше.</li>
+      <li>Браузер покажет запрос на установку — подтвердите <strong>Добавить расширение</strong>.</li>
+      <li>Готово: расширение появится на странице <code>browser://extensions</code> и начнёт работать на platform.deepseek.com.</li>
+    </ol>
+
+    <h2>Вариант без кликов: автоматическая установка</h2>
+    <p class="lead">Если нужно развернуть расширение сразу на нескольких ПК, удобнее форсированная установка: браузер сам скачает и поставит расширение, а затем будет обновлять его.</p>
+    <div class="download-box">
+      <div class="meta">
+        <strong>install-policy-forcelist.reg</strong>
+        Автоустановка и автообновление по адресу update.xml
+      </div>
+      <div class="card-actions">
+        <a class="btn" href="install-policy-forcelist.reg" download>Скачать .reg</a>
+      </div>
+    </div>
+    <ol class="steps">
+      <li>Примените <code>install-policy-forcelist.reg</code> так же, как файл из шага 1.</li>
+      <li>Перезапустите браузер — расширение установится само.</li>
+    </ol>
+
+    <h2>Технические данные</h2>
+    <ul class="feature-list">
+      <li><strong>ID расширения:</strong> <code>cdoacknmgmgemgkhjemnlcmebofaldnb</code></li>
+      <li><strong>Файл расширения:</strong> <a href="../downloads/yen-to-rub.crx">yen-to-rub.crx</a></li>
+      <li><strong>Манифест обновлений:</strong> <a href="../downloads/update.xml">update.xml</a></li>
+      <li><strong>Политика разрешения источников:</strong> <a href="install-policy-sources.reg">install-policy-sources.reg</a></li>
+      <li><strong>Политика автоустановки:</strong> <a href="install-policy-forcelist.reg">install-policy-forcelist.reg</a></li>
+    </ul>
+
+    <h2>Если что-то не работает</h2>
+    <ul class="feature-list">
+      <li><strong>Ошибка «CRX_REQUIRED_PROOF_MISSING»</strong> — политика не применилась. Проверьте <code>browser://policy</code> и перезапустите браузер полностью.</li>
+      <li><strong>Клик по кнопке просто скачивает файл</strong> — нет политики <code>ExtensionInstallSources</code> или домен указан с ошибкой.</li>
+      <li><strong>Политика не видна в списке</strong> — файл .reg не был применён (нужны права администратора) или браузер не перезапускался.</li>
+      <li><strong>Как убрать расширение</strong> — на странице <code>browser://extensions</code>; для отмены политик удалите соответствующее значение в <code>Regedit</code> и перезапустите браузер.</li>
+    </ul>
+
+    <p class="note">
+      Внимание: <code>.reg</code> изменяет системные политики браузера. Применяйте его только на своих ПК
+      и понимайте, что делаете. Приватный ключ подписи расширения хранится только локально у владельца
+      и никогда не публикуется — иначе кто-то сможет выпустить расширение с тем же ID.
+    </p>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© <span id="year">2026</span> Q Marketplace</span>
+    <a href="../">Все расширения</a>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

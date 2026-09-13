@@ -14,10 +14,30 @@ index.html                 — главная страница (витрина �
 404.html                   — страница «не найдено»
 assets/style.css           — общие стили
 assets/icon.svg            — иконка сайта (favicon)
-downloads/                 — ZIP-архивы расширений
+downloads/                 — ZIP-архивы, .crx и update.xml для self-hosted установки
+install/index.html         — инструкция «установка в один клик» + .reg-файлы политик
 <имя-расширения>/index.html— отдельная страница расширения
 .nojekyll                  — отключает обработку Jekyll (файлы отдаются как есть)
 ```
+
+## Self-hosted установка (политики)
+
+Скрипт `tools\make-policy-reg.ps1` (лежит в корне проекта, не в репозитории) генерирует
+`site/install/install-policy-sources.reg` и `site/install/install-policy-forcelist.reg`
+для веток Yandex Browser, Chrome и Chromium.
+
+Сборка `.crx` и `update.xml` (Node.js, пакет `crx3`, ставится в `.tools/`):
+
+```
+node .tools\node_modules\crx3\bin\crx3.js -p "keys\yen-to-rub.pem" ^
+  -o "site\downloads\yen-to-rub.crx" -x "site\downloads\update.xml" ^
+  --appVersion 1.0.0 ^
+  --crxURL "https://quasaaq.github.io/marketplace/downloads/yen-to-rub.crx" app
+```
+
+Приватный ключ `keys\yen-to-rub.pem` — **вне репозитория**, в GitHub не попадает.
+При выходе новой версии увеличьте `version` в `app/manifest.json`, пересоберите `.crx`
+с тем же ключом и обновите `--appVersion` в `update.xml`.
 
 ## Как добавить новое расширение
 
