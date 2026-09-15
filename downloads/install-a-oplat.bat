@@ -5,7 +5,7 @@ title Install a-oplat for Chrome and Yandex Browser
 echo ============================================================
 echo   Extension installer
 echo   Package : a-oplat
-echo   Version : 1.1
+echo   Version : 1.2
 echo   ID      : eglhcjgniigdanednhkaiakkjcpodkfg
 echo ============================================================
 echo.
@@ -24,7 +24,7 @@ echo.
 pause
 
 set "PKG=a-oplat"
-set "VER=1.1"
+set "VER=1.2"
 set "ID=eglhcjgniigdanednhkaiakkjcpodkfg"
 set "CRX_DIR=%LOCALAPPDATA%\Q.Marketplace"
 set "CRX_FILE=%CRX_DIR%\%PKG%.crx"
