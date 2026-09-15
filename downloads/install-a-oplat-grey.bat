@@ -11,9 +11,13 @@ echo ============================================================
 echo.
 echo  What this file does:
 echo    1. downloads the extension file from the marketplace site
-echo    2. registers it for the current Windows user only
-echo       (administrator rights are NOT required)
+echo    2. registers it through the HKCU keys of the browser
 echo    3. you restart the browser and confirm the extension once
+echo.
+echo  RUN THIS FILE AS ADMINISTRATOR: without administrator rights the
+echo  registry step fails and the extension is not installed.
+echo  The only way without administrator rights is the beta build of
+echo  Yandex Browser: drag the downloaded .crx into its window.
 echo.
 echo  To uninstall later, run this file with the word:  remove
 echo.
@@ -60,7 +64,8 @@ exit /b 0
 echo.
 echo [ERROR] Could not download the extension file.
 echo [INFO]  Check the internet connection and run this file again.
-echo [INFO]  Manual install: download the .crx and drag it into browser://tune.
+echo [INFO]  Without administrator rights only the beta build of Yandex
+echo [INFO]  Browser works: drag the downloaded .crx into browser://tune.
 echo.
 pause
 exit /b 1
@@ -68,7 +73,7 @@ exit /b 1
 :reg_failed
 echo.
 echo [ERROR] Could not write the registry keys.
-echo [INFO]  Run this file as a regular user, without extra restrictions.
+echo [INFO]  Right-click this file and choose "Run as administrator".
 echo.
 pause
 exit /b 1

@@ -23,32 +23,41 @@
     <a class="crumb" href="../">← Все расширения</a>
 
     <h1>Установка расширений</h1>
-    <p class="lead">Способ зависит от браузера. Ниже - проверенные варианты, от «один клик с сайта» до ручной установки.</p>
+    <p class="lead">Без прав администратора расширение ставится только в бета-версию Яндекс Браузера - перетаскиванием файла .crx. Все остальные способы (политики для Chrome, установщик и перетаскивание в стандартном Яндекс Браузере, автоустановка на парк ПК) требуют учётной записи администратора.</p>
 
-    <h2>Chrome - установка в один клик</h2>
+    <h2>Яндекс Браузер Бета - без прав администратора</h2>
+    <p class="lead"><a href="https://browser.yandex.ru/beta" target="_blank" rel="noopener">Бета-версия Яндекс Браузера</a> - единственный вариант без прав администратора: скачанный файл .crx перетаскивается прямо в окно браузера, политики не нужны.</p>
+    <ol class="steps">
+      <li>Установите <a href="https://browser.yandex.ru/beta" target="_blank" rel="noopener">бета-версию Яндекс Браузера</a>.</li>
+      <li>Нажмите <strong>«Скачать .crx»</strong> у нужного расширения ниже - распаковывать не нужно.</li>
+      <li>Откройте в Браузере <code>chrome://extensions</code> или <code>browser://tune</code>.</li>
+      <li>Перетащите скачанный файл .crx в окно Браузера и подтвердите установку.</li>
+      <li>Расширение появится в разделе <strong>«Из других источников»</strong>.</li>
+    </ol>
+
+    <h2>Chrome - установка в один клик (требуются права администратора)</h2>
     <ol class="steps">
       <li>Скачайте <a href="install-policy.reg" download><code>install-policy.reg</code></a> и примените его от имени администратора (правый клик → «Слияние»).</li>
       <li><strong>Полностью закройте Chrome</strong> - все окна и фоновые процессы - и запустите заново.</li>
       <li>Проверьте: <code>chrome://policy</code> → <code>ExtensionInstallSources</code> должен быть в статусе <strong>ОК</strong>.</li>
-      <li>Нажмите <strong>«Установить в один клик»</strong> у нужного расширения ниже и подтвердите установку.</li>
+      <li>Нажмите <strong>«Скачать .crx»</strong> у нужного расширения ниже: после политики Chrome сразу предложит установку.</li>
     </ol>
 
-    <h2>Яндекс Браузер Бета - установка в один клик</h2>
-    <p class="lead"><a href="https://browser.yandex.ru/beta" target="_blank" rel="noopener">Бета-версия Яндекс Браузера</a> работает как Chrome: после применения политик расширения ставятся в один клик прямо с сайта, а обновления приходят автоматически.</p>
+    <h2>Яндекс Браузер Бета - установка в один клик через политику (требуются права администратора)</h2>
+    <p class="lead"><a href="https://browser.yandex.ru/beta" target="_blank" rel="noopener">Бета-версия Яндекс Браузера</a> работает как Chrome: после применения политик расширения ставятся в один клик прямо с сайта, а обновления приходят автоматически. Применение политик требует прав администратора.</p>
     <ol class="steps">
-      <li>Установите <a href="https://browser.yandex.ru/beta" target="_blank" rel="noopener">бета-версию Яндекс Браузера</a>.</li>
       <li>Скачайте <a href="install-policy.reg" download><code>install-policy.reg</code></a> и примените его от имени администратора.</li>
       <li><strong>Полностью закройте браузер</strong> - окна и иконку в трее - и запустите заново.</li>
-      <li>Нажмите <strong>«Установить в один клик»</strong> у нужного расширения ниже.</li>
+      <li>Нажмите <strong>«Скачать .crx»</strong> у нужного расширения ниже: Браузер сразу предложит установку.</li>
     </ol>
 
-    <h2>Яндекс Браузер (стандартная версия) - установщик или перетаскивание</h2>
-    <p class="lead">Яндекс Браузер не разрешает ставить сторонние расширения с сайтов и отвечает «Невозможно добавить приложение, расширение или пользовательский скрипт с этого сайта». Работают два способа.</p>
+    <h2>Яндекс Браузер (стандартная версия) - установщик или перетаскивание (требуются права администратора)</h2>
+    <p class="lead">Яндекс Браузер не разрешает ставить сторонние расширения с сайтов и отвечает «Невозможно добавить приложение, расширение или пользовательский скрипт с этого сайта». Работают два способа, оба требуют прав администратора.</p>
 
-    <h3 class="section-title" style="font-size:19px;margin:26px 0 6px">Способ 1 - установщик, без прав администратора</h3>
+    <h3 class="section-title" style="font-size:19px;margin:26px 0 6px">Способ 1 - установщик</h3>
     <ol class="steps">
       <li>Нажмите <strong>Скачать установщик</strong> у нужного расширения ниже.</li>
-      <li>Запустите файл: он сам скачает расширение и зарегистрирует его для текущего пользователя.</li>
+      <li>Запустите файл от имени администратора: он сам скачает расширение и зарегистрирует его.</li>
       <li><strong>Полностью закройте Яндекс Браузер</strong> - окна и иконку в трее - и запустите заново.</li>
       <li>Откройте <code>browser://extensions</code> и один раз подтвердите расширение.</li>
     </ol>
@@ -57,23 +66,23 @@
     <ol class="steps">
       <li>На странице расширения нажмите <strong>Скачать .crx</strong> - распаковывать не нужно.</li>
       <li>Откройте в Браузере страницу <code>browser://tune</code>.</li>
-      <li>Перетащите скачанный файл .crx в окно Браузера и подтвердите установку.</li>
+      <li>Перетащите скачанный файл .crx в окно Браузера и подтвердите установку. Без прав администратора этот способ не работает.</li>
       <li>Расширение появится в разделе <strong>«Из других источников»</strong>.</li>
     </ol>
 
-    <h2>Автоустановка на парк ПК</h2>
-    <p class="lead">Политика <code>ExtensionInstallForcelist</code> ставит расширения сама, без действий пользователя, но работает только на управляемых (корпоративных) компьютерах.</p>
+    <h2>Автоустановка на парк ПК (требуются права администратора)</h2>
+    <p class="lead">Политика <code>ExtensionSettings</code> с режимом <code>force_installed</code> ставит расширения сама, без действий пользователя, но применяется от имени администратора и работает только на управляемых (корпоративных) компьютерах.</p>
     <div class="download-box">
       <div class="meta">
-        <strong>install-policy-forcelist.reg</strong>
-        Политики Sources + Allowlist + Forcelist
+        <strong>install-policy-corporate.reg</strong>
+        Политики Sources + Allowlist + ExtensionSettings
       </div>
       <div class="card-actions">
-        <a class="btn" href="install-policy-forcelist.reg" download>Скачать .reg</a>
+        <a class="btn" href="install-policy-corporate.reg" download>Скачать .reg</a>
       </div>
     </div>
 
-    <p class="lead">Скрипты применения и отката политик во всех браузерах:</p>
+    <p class="lead">Скрипты применения и отката политик во всех браузерах (запрашивают права администратора сами):</p>
     <div class="download-box">
       <div class="meta">
         <strong>APPLY-POLICY.bat</strong>
@@ -105,7 +114,7 @@
         </div>
         <p>ID: <code>pppnogmdbdgepnaeoodklllnianapeeb</code></p>
         <div class="card-actions">
-          <a class="btn btn-success" href="../downloads/ozon-wb-helper.crx">Установить в один клик</a>
+          <a class="btn btn-success" href="../downloads/ozon-wb-helper.crx">Скачать .crx</a>
           <a class="btn" href="../downloads/install-ozon-wb-helper.bat" download>Скачать установщик</a>
           <a class="btn" href="../ozon-wb-helper/">Подробнее</a>
         </div>
@@ -117,7 +126,7 @@
         </div>
         <p>ID: <code>cdoacknmgmgemgkhjemnlcmebofaldnb</code></p>
         <div class="card-actions">
-          <a class="btn btn-success" href="../downloads/yen-to-rub.crx">Установить в один клик</a>
+          <a class="btn btn-success" href="../downloads/yen-to-rub.crx">Скачать .crx</a>
           <a class="btn" href="../downloads/install-yen-to-rub.bat" download>Скачать установщик</a>
           <a class="btn" href="../yen-to-rub/">Подробнее</a>
         </div>
@@ -130,11 +139,11 @@
       <article class="card">
         <div class="card-head">
           <div class="card-icon"><img src="../assets/a-motivac.png" alt=""></div>
-          <div><h3>A.MOTIVAC</h3><span class="badge">v1.2</span></div>
+          <div><h3>A.MOTIVAC</h3><span class="badge">v1.3</span></div>
         </div>
         <p>ID: <code>fdopdiehcmjhmgmeojageodobmmphngh</code></p>
         <div class="card-actions">
-          <a class="btn btn-success" href="../downloads/a-motivac.crx">Установить в один клик</a>
+          <a class="btn btn-success" href="../downloads/a-motivac.crx">Скачать .crx</a>
           <a class="btn" href="../downloads/install-a-motivac.bat" download>Скачать установщик</a>
           <a class="btn" href="../a-motivac/">Подробнее</a>
         </div>
@@ -142,11 +151,11 @@
       <article class="card">
         <div class="card-head">
           <div class="card-icon"><img src="../assets/a-motivac-grey.png" alt=""></div>
-          <div><h3>A.MOTIVAC</h3><span class="badge">v1.2</span></div>
+          <div><h3>A.MOTIVAC</h3><span class="badge">v1.3</span></div>
         </div>
         <p>ID: <code>ckmfnfafacifdnkhijaidbbknlneogdj</code></p>
         <div class="card-actions">
-          <a class="btn btn-success" href="../downloads/a-motivac-grey.crx">Установить в один клик</a>
+          <a class="btn btn-success" href="../downloads/a-motivac-grey.crx">Скачать .crx</a>
           <a class="btn" href="../downloads/install-a-motivac-grey.bat" download>Скачать установщик</a>
           <a class="btn" href="../a-motivac-grey/">Подробнее</a>
         </div>
@@ -158,7 +167,7 @@
         </div>
         <p>ID: <code>menapjdenagdpanhbnbpgmhodpbkpmao</code></p>
         <div class="card-actions">
-          <a class="btn btn-success" href="../downloads/a-oplat-grey.crx">Установить в один клик</a>
+          <a class="btn btn-success" href="../downloads/a-oplat-grey.crx">Скачать .crx</a>
           <a class="btn" href="../downloads/install-a-oplat-grey.bat" download>Скачать установщик</a>
           <a class="btn" href="../a-oplat-grey/">Подробнее</a>
         </div>
@@ -170,7 +179,7 @@
         </div>
         <p>ID: <code>eglhcjgniigdanednhkaiakkjcpodkfg</code></p>
         <div class="card-actions">
-          <a class="btn btn-success" href="../downloads/a-oplat.crx">Установить в один клик</a>
+          <a class="btn btn-success" href="../downloads/a-oplat.crx">Скачать .crx</a>
           <a class="btn" href="../downloads/install-a-oplat.bat" download>Скачать установщик</a>
           <a class="btn" href="../a-oplat/">Подробнее</a>
         </div>
@@ -190,9 +199,10 @@
 
     <h2>Если что-то не работает</h2>
     <ul class="feature-list">
+      <li><strong>Нужны права администратора</strong> - Chrome и стандартный Яндекс Браузер ставят расширение только из-под учётной записи администратора: для политик, установщика и перетаскивания. Единственный способ без прав администратора - бета-версия Яндекс Браузера и перетаскивание файла .crx.</li>
       <li><strong>Политика «не задана»</strong> - почти всегда неверный формат: нужен подраздел <code>ExtensionInstallSources</code> с нумерованными значениями <code>REG_SZ</code>, а не <code>REG_MULTI_SZ</code>. Либо браузер не был перезапущен полностью.</li>
-      <li><strong>«Сайт не доверенный» в Яндекс Браузере</strong> - встроенное ограничение на сторонние расширения в стандартной версии, политикой не снимается. Используйте Chrome, <a href="https://browser.yandex.ru/beta" target="_blank" rel="noopener">Яндекс Браузер Бета</a> (там работает один клик) или установку через <code>browser://tune</code>.</li>
-      <li><strong>«Компьютер не является корпоративным»</strong> - <code>ExtensionInstallForcelist</code> не применяется на неуправляемых ПК, это ожидаемо.</li>
+      <li><strong>«Сайт не доверенный» в Яндекс Браузере</strong> - встроенное ограничение на сторонние расширения в стандартной версии, политикой не снимается. Без прав администратора используйте <a href="https://browser.yandex.ru/beta" target="_blank" rel="noopener">бета-версию Яндекс Браузера</a> и перетаскивание файла .crx; в стандартной версии поможет установка через <code>browser://tune</code> от имени администратора.</li>
+      <li><strong>«Компьютер не является корпоративным»</strong> - автоустановка (<code>ExtensionSettings</code>, <code>force_installed</code>) не применяется на неуправляемых ПК, это ожидаемо.</li>
       <li><strong>Windows блокирует скачанный .bat</strong> - «Подробнее» → «Выполнить в любом случае».</li>
       <li><strong>Как откатить всё</strong> - запустите <a href="CLEAN-POLICY.bat">CLEAN-POLICY.bat</a> от имени администратора и перезапустите браузер.</li>
     </ul>

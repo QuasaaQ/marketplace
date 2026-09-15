@@ -47,7 +47,7 @@ echo ============================================================
 echo.
 echo  1. Close ALL browser windows completely (check the tray).
 echo  2. Start the browser again.
-echo  3. Run the install-*.bat installer and confirm once.
+echo  3. Run install-*.bat AS ADMINISTRATOR and confirm once.
 echo.
 pause
 exit /b 0
