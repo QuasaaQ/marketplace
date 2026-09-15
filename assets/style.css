@@ -188,6 +188,40 @@ img { max-width: 100%; display: block; }
 
 .card-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; }
 
+/* Дополнительные ссылки стороннего расширения: квадратные кнопки над основными */
+.extra-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 14px 0 12px;
+}
+
+.btn-extra {
+  width: 72px;
+  height: 72px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  font-size: 10.5px;
+  line-height: 1.2;
+  font-weight: 600;
+  color: var(--text);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  text-align: center;
+  overflow: hidden;
+  word-break: break-word;
+}
+
+.btn-extra:hover {
+  background: #232b3c;
+  border-color: var(--accent);
+  color: #fff;
+  text-decoration: none;
+}
+
 /* На карточке две кнопки стоят в один ряд: делаем их компактнее */
 .card .card-actions .btn {
   flex: 1 1 auto;
