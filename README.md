@@ -36,6 +36,7 @@ assets/style.css           - общие стили (правится вручн�
 assets/icon.svg            - иконка сайта (правится вручную)
 assets/<slug>.png          - иконки расширений, копируются сборщиком
 assets/external/<id>.png   - иконки сторонних расширений, скачиваются из Chrome Web Store
+downloads/external/<slug>.crx - пакеты сторонних расширений с GitHub (публикуются как есть)
 downloads/<slug>.crx       - подписанные расширения (без прав админа ставятся перетаскиванием в бета-версии Яндекс Браузера)
 downloads/<slug>-grey.crx  - серая сборка того же расширения: отдельный пакет, свой ID и свой update.xml
 downloads/<slug>-v<ver>.zip- ZIP-архивы расширений
