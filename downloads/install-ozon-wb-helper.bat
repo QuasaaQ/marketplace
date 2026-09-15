@@ -5,7 +5,7 @@ title Install ozon-wb-helper for Chrome and Yandex Browser
 echo ============================================================
 echo   Extension installer
 echo   Package : ozon-wb-helper
-echo   Version : 1.9
+echo   Version : 2.0
 echo   ID      : pppnogmdbdgepnaeoodklllnianapeeb
 echo ============================================================
 echo.
@@ -24,7 +24,7 @@ echo.
 pause
 
 set "PKG=ozon-wb-helper"
-set "VER=1.9"
+set "VER=2.0"
 set "ID=pppnogmdbdgepnaeoodklllnianapeeb"
 set "CRX_DIR=%LOCALAPPDATA%\Q.Marketplace"
 set "CRX_FILE=%CRX_DIR%\%PKG%.crx"

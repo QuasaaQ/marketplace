@@ -5,7 +5,7 @@ title Install a-motivac for Chrome and Yandex Browser
 echo ============================================================
 echo   Extension installer
 echo   Package : a-motivac
-echo   Version : 1.4
+echo   Version : 1.6
 echo   ID      : fdopdiehcmjhmgmeojageodobmmphngh
 echo ============================================================
 echo.
@@ -24,7 +24,7 @@ echo.
 pause
 
 set "PKG=a-motivac"
-set "VER=1.4"
+set "VER=1.6"
 set "ID=fdopdiehcmjhmgmeojageodobmmphngh"
 set "CRX_DIR=%LOCALAPPDATA%\Q.Marketplace"
 set "CRX_FILE=%CRX_DIR%\%PKG%.crx"
