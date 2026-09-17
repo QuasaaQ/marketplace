@@ -1,0 +1,453 @@
+/* Q.Marketplace - общие стили сайта (GitHub Pages) */
+
+:root {
+  --bg: #0e1117;
+  --bg-soft: #131824;
+  --surface: #171c28;
+  --surface-2: #1d2331;
+  --border: #262e3f;
+  --text: #e7eaf0;
+  --muted: #97a1b4;
+  --accent: #4f8cff;
+  --accent-hover: #3d7bf0;
+  --success: #22c55e;
+  --radius: 14px;
+  --radius-sm: 10px;
+  --max: 1080px;
+  --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+img { max-width: 100%; display: block; }
+
+/* ---------- Шапка ---------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 24px;
+  background: rgba(14, 17, 23, .82);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--text);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: .2px;
+}
+.brand:hover { text-decoration: none; }
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, var(--accent), #7b5cff);
+  color: #fff;
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.site-nav { display: flex; align-items: center; gap: 18px; font-size: 15px; }
+.site-nav a { color: var(--muted); }
+.site-nav a:hover { color: var(--text); text-decoration: none; }
+
+/* ---------- Контейнер ---------- */
+
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  padding: 72px 0 40px;
+  text-align: center;
+}
+
+.hero h1 {
+  margin: 0 0 14px;
+  font-size: clamp(28px, 5vw, 46px);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.hero p {
+  margin: 0 auto;
+  max-width: 640px;
+  color: var(--muted);
+  font-size: 18px;
+}
+
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+
+.badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg-soft);
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* ---------- Секции ---------- */
+
+.section { padding: 40px 0 56px; }
+
+.section-title {
+  margin: 0 0 6px;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+}
+
+.section-sub {
+  margin: 0 0 24px;
+  color: var(--muted);
+}
+
+/* ---------- Сетка карточек ---------- */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 18px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: transform .15s ease, border-color .15s ease;
+}
+.card:hover { transform: translateY(-2px); border-color: #33405a; }
+
+.card-head { display: flex; align-items: center; gap: 14px; }
+
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 34px 0 14px;
+}
+.section-head .section-title { margin: 0; }
+
+.card-icon {
+  flex: 0 0 auto;
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: #fff;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.card-icon img { width: 32px; height: 32px; }
+
+.card h3 { margin: 0; font-size: 17px; }
+.card p { margin: 0; color: var(--muted); font-size: 15px; }
+
+.card-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; }
+
+/* Дополнительные ссылки стороннего расширения: квадратные кнопки над основными */
+.extra-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 14px 0 12px;
+}
+
+.btn-extra {
+  width: 72px;
+  height: 72px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  font-size: 10.5px;
+  line-height: 1.2;
+  font-weight: 600;
+  color: var(--text);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  text-align: center;
+  overflow: hidden;
+  word-break: break-word;
+}
+
+.btn-extra:hover {
+  background: #232b3c;
+  border-color: var(--accent);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* На карточке две кнопки стоят в один ряд: делаем их компактнее */
+.card .card-actions .btn {
+  flex: 1 1 auto;
+  padding: 9px 12px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+/* ---------- Кнопки ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .15s ease, border-color .15s ease, transform .1s ease;
+}
+.btn:hover { background: #232b3c; text-decoration: none; }
+.btn:active { transform: translateY(1px); }
+
+.btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.btn-primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+
+.btn-success {
+  background: var(--success);
+  border-color: var(--success);
+  color: #05240f;
+}
+.btn-success:hover { background: #1eb257; border-color: #1eb257; }
+
+/* ---------- Шаги ---------- */
+
+.steps {
+  counter-reset: step;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.steps li {
+  position: relative;
+  padding: 16px 18px 16px 60px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.steps li::before {
+  counter-increment: step;
+  content: counter(step);
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.steps code {
+  padding: 2px 7px;
+  border-radius: 6px;
+  background: #0b0e14;
+  border: 1px solid var(--border);
+  font-size: 13.5px;
+  word-break: break-all;
+}
+
+.note {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border-left: 3px solid var(--accent);
+  background: var(--bg-soft);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+/* ---------- Статья расширения ---------- */
+
+.article { padding: 40px 0 64px; }
+
+.article h1 { margin: 0 0 10px; font-size: clamp(26px, 4vw, 38px); letter-spacing: -0.02em; }
+.article .lead { color: var(--muted); font-size: 18px; max-width: 720px; }
+
+.article h2 { margin: 40px 0 12px; font-size: 21px; }
+
+.feature-list { margin: 0; padding-left: 20px; color: var(--muted); }
+.feature-list li { margin-bottom: 8px; }
+.feature-list strong { color: var(--text); }
+
+.download-box {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 22px 0 4px;
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.download-box .meta { color: var(--muted); font-size: 14px; }
+.download-box .meta strong { display: block; color: var(--text); font-size: 16px; }
+
+.crumb { display: inline-block; margin-bottom: 18px; color: var(--muted); font-size: 14px; }
+
+/* ---------- Поддержать проект: карточка с QR-кодом ---------- */
+
+/* Карточка повторяет стиль карточек расширений (.card), но выведена из потока:
+   она висит полупрозрачной подложкой в правом верхнем углу, поэтому вёрстку
+   страницы не меняет - никакой второй колонки, никаких сдвигов текста. */
+.donate-widget {
+  position: fixed;
+  top: 76px;
+  right: 16px;
+  z-index: 10;
+  width: 232px;
+  padding: 14px;
+  gap: 10px;
+  background: rgba(23, 28, 40, .92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: var(--shadow);
+  opacity: .94;
+  transition: opacity .15s ease;
+}
+
+.donate-widget:hover { opacity: 1; }
+
+.donate-widget .card-icon { width: 40px; height: 40px; }
+.donate-widget .card-icon svg { width: 20px; height: 20px; }
+.donate-widget h3 { font-size: 15px; }
+.donate-widget p { font-size: 13px; }
+
+/* QR-код всегда на белой подложке: так он читается сканером */
+.donate-widget .donate-qr {
+  padding: 10px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  text-align: center;
+}
+
+.donate-widget .donate-qr img { width: 100%; max-width: 220px; height: auto; margin: 0 auto; }
+
+.donate-caption {
+  display: block;
+  margin-top: 8px;
+  color: #4a5262;
+  font-size: 11.5px;
+  line-height: 1.4;
+}
+
+.donate-widget .card-actions .btn { flex: 1 1 auto; }
+
+/* На средних экранах подложка ужимается до QR-кода, на телефонах - до
+   минимальной карточки, чтобы не закрывать содержимое страницы. */
+@media (max-width: 1500px) {
+  .donate-widget { width: 156px; padding: 10px; gap: 8px; }
+  .donate-widget p,
+  .donate-widget .card-actions,
+  .donate-widget .card-head .badge { display: none; }
+  .donate-widget h3 { font-size: 13px; }
+  .donate-widget .card-icon { width: 32px; height: 32px; }
+  .donate-widget .card-icon svg { width: 16px; height: 16px; }
+  .donate-widget .donate-qr img { max-width: 118px; }
+  .donate-caption { font-size: 10.5px; }
+}
+
+@media (max-width: 720px) {
+  .donate-widget { width: 104px; top: 64px; right: 8px; padding: 8px; gap: 6px; }
+  .donate-widget .card-head { gap: 8px; }
+  .donate-widget h3 { font-size: 11.5px; }
+  .donate-widget .card-icon { width: 28px; height: 28px; }
+  .donate-widget .donate-caption { display: none; }
+  .donate-widget .donate-qr { padding: 6px; }
+  .donate-widget .donate-qr img { max-width: 80px; }
+}
+
+/* ---------- Подвал ---------- */
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 28px 0 40px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.site-footer .wrap { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center; }
+.site-footer a { color: var(--muted); }
+.site-footer a:hover { color: var(--text); }
+
+.footer-donate { color: var(--accent); }
+
+/* Публичный счётчик посещений (необязательный) */
+.visit-badge { display: inline-flex; align-items: center; }
+.visit-badge img { height: 20px; border-radius: 4px; }
+
+/* ---------- Адаптив ---------- */
+
+@media (max-width: 560px) {
+  .wrap { padding: 0 16px; }
+  .site-header { padding: 12px 16px; }
+  .hero { padding: 48px 0 28px; }
+  .download-box { flex-direction: column; align-items: stretch; }
+}

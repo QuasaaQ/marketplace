@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Установка расширений - Q.Marketplace</title>
+  <meta name="description" content="Установка расширений Chrome и Яндекс Браузера с сайта">
+  <link rel="icon" href="../assets/icon.svg">
+  <link rel="stylesheet" href="../assets/style.css">
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();
+   for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(112718501, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/112718501" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href=".././" aria-label="Q.Marketplace"><span class="brand-mark"><svg viewBox="0 0 64 64" width="18" height="18" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round"><circle cx="32" cy="32" r="14"/><line x1="40" y1="40" x2="46" y2="46"/></g></svg></span>.Marketplace</a>
+  <nav class="site-nav">
+    <a href="../#extensions">Расширения</a>
+    <a href="../install/">Установка</a>
+    <a href="https://github.com/QuasaaQ" target="_blank" rel="noopener">GitHub</a>
+  </nav>
+</header><aside class="card donate-widget" id="donate">
+  <div class="card-head">
+    <div class="card-icon"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3z"/><path d="M20 14v3M20 20h-4M14 20v1"/></g></svg></div>
+    <div>
+      <h3>Поддержать проект</h3><span class="badge">QR-код</span>
+    </div>
+  </div>
+  <p>Расширения бесплатные, без рекламы и регистрации. Если они экономят ваше время, можно поддержать разработку переводом по QR-коду - сумма любая.</p>
+  <div class="donate-qr">
+    <img src="../assets/donation-qr.jpg" alt="Поддержать проект" loading="lazy">
+    <span class="donate-caption">Наведите камеру телефона или отсканируйте код в приложении банка</span>
+  </div>
+</aside>
+<main class="article">
+  <div class="wrap">
+
+    <a class="crumb" href="../">← Все расширения</a>
+
+    <h1>Установка расширений</h1>
+    <p class="lead">Без прав администратора расширение ставится только в бета-версию Яндекс Браузера - перетаскиванием файла .crx. Все остальные способы (политики для Chrome, установщик и перетаскивание в стандартном Яндекс Браузере, автоустановка на парк ПК) требуют учётной записи администратора.</p>
+
+    <h2>Яндекс Браузер Бета - без прав администратора</h2>
+    <p class="lead"><a href="https://browser.yandex.ru/beta" target="_blank" rel="noopener">Бета-версия Яндекс Браузера</a> - единственный вариант без прав администратора: скачанный файл .crx перетаскивается прямо в окно браузера, политики не нужны.</p>
+    <ol class="steps">
+      <li>Установите <a href="https://browser.yandex.ru/beta" target="_blank" rel="noopener">бета-версию Яндекс Браузера</a>.</li>
+      <li>Нажмите <strong>«Скачать .crx»</strong> у нужного расширения ниже - распаковывать не нужно.</li>
+      <li>Откройте в Браузере <code>chrome://extensions</code> или <code>browser://tune</code>.</li>
+      <li>Перетащите скачанный файл .crx в окно Браузера и подтвердите установку.</li>
+      <li>Расширение появится в разделе <strong>«Из других источников»</strong>.</li>
+    </ol>
+
+    <h2>Chrome - установка в один клик (требуются права администратора)</h2>
+    <ol class="steps">
+      <li>Скачайте <a href="install-policy.reg" download><code>install-policy.reg</code></a> и примените его <strong>с правами администратора</strong>. Проще всего запустить <a href="APPLY-POLICY.bat">APPLY-POLICY.bat</a> - он сам запросит UAC. Важно: при двойном клике по <code>.reg</code> повышение прав не запрашивается, и Windows молча отказывает в записи ветки <code>Policies</code> - файл «применится», а политики в браузере не появятся.</li>
+      <li><strong>Полностью закройте Chrome</strong> - все окна и фоновые процессы - и запустите заново.</li>
+      <li>Проверьте: <code>chrome://policy</code> → <code>ExtensionInstallSources</code> и <code>ExtensionManifestV2Availability</code> должны быть в статусе <strong>ОК</strong>.</li>
+      <li>Нажмите <strong>«Скачать .crx»</strong> у нужного расширения ниже: после политики Chrome сразу предложит установку.</li>
+    </ol>
+    <p class="lead">Файл политик заодно включает <code>ExtensionManifestV2Availability</code> = 2 (<strong>Force enabled</strong>): браузер перестаёт сам отключать и удалять расширения устаревшего Manifest V2.</p>
+
+    <h2>Яндекс Браузер Бета - установка в один клик через политику (требуются права администратора)</h2>
+    <p class="lead"><a href="https://browser.yandex.ru/beta" target="_blank" rel="noopener">Бета-версия Яндекс Браузера</a> работает как Chrome: после применения политик расширения ставятся в один клик прямо с сайта, а обновления приходят автоматически. Применение политик требует прав администратора.</p>
+    <ol class="steps">
+      <li>Скачайте <a href="install-policy.reg" download><code>install-policy.reg</code></a> и примените его с правами администратора: лучше через <a href="APPLY-POLICY.bat">APPLY-POLICY.bat</a>, который сам запрашивает UAC.</li>
+      <li><strong>Полностью закройте браузер</strong> - окна и иконку в трее - и запустите заново.</li>
+      <li>Нажмите <strong>«Скачать .crx»</strong> у нужного расширения ниже: Браузер сразу предложит установку.</li>
+    </ol>
+
+    <h2>Яндекс Браузер (стандартная версия) - установщик или перетаскивание (требуются права администратора)</h2>
+    <p class="lead">Яндекс Браузер не разрешает ставить сторонние расширения с сайтов и отвечает «Невозможно добавить приложение, расширение или пользовательский скрипт с этого сайта». Работают два способа, оба требуют прав администратора.</p>
+
+    <h3 class="section-title" style="font-size:19px;margin:26px 0 6px">Способ 1 - установщик</h3>
+    <ol class="steps">
+      <li>Нажмите <strong>Скачать установщик</strong> у нужного расширения ниже.</li>
+      <li>Запустите файл от имени администратора: он сам скачает расширение и зарегистрирует его.</li>
+      <li><strong>Полностью закройте Яндекс Браузер</strong> - окна и иконку в трее - и запустите заново.</li>
+      <li>Откройте <code>browser://extensions</code> и один раз подтвердите расширение.</li>
+    </ol>
+
+    <h3 class="section-title" style="font-size:19px;margin:26px 0 6px">Способ 2 - перетаскивание</h3>
+    <ol class="steps">
+      <li>На странице расширения нажмите <strong>Скачать .crx</strong> - распаковывать не нужно.</li>
+      <li>Откройте в Браузере страницу <code>browser://tune</code>.</li>
+      <li>Перетащите скачанный файл .crx в окно Браузера и подтвердите установку. Без прав администратора этот способ не работает.</li>
+      <li>Расширение появится в разделе <strong>«Из других источников»</strong>.</li>
+    </ol>
+
+    <h2>Автоустановка на парк ПК (требуются права администратора)</h2>
+    <p class="lead">Политика <code>ExtensionSettings</code> с режимом <code>force_installed</code> ставит расширения сама, без действий пользователя, но применяется от имени администратора и работает только на управляемых (корпоративных) компьютерах.</p>
+    <div class="download-box">
+      <div class="meta">
+        <strong>install-policy-corporate.reg</strong>
+        Политики Sources + Allowlist + MV2 + ExtensionSettings
+      </div>
+      <div class="card-actions">
+        <a class="btn" href="install-policy-corporate.reg" download>Скачать .reg</a>
+      </div>
+    </div>
+
+    <p class="lead">Скрипты применения и отката политик во всех браузерах (запрашивают права администратора сами):</p>
+    <div class="download-box">
+      <div class="meta">
+        <strong>APPLY-POLICY.bat</strong>
+        Включает установку из нашего сайта (Sources + Allowlist) и разрешает Manifest V2
+      </div>
+      <div class="card-actions">
+        <a class="btn" href="APPLY-POLICY.bat" download>Скачать .bat</a>
+      </div>
+    </div>
+    <div class="download-box">
+      <div class="meta">
+        <strong>CLEAN-POLICY.bat</strong>
+        Удаляет установленные политики (откат)
+      </div>
+      <div class="card-actions">
+        <a class="btn" href="CLEAN-POLICY.bat" download>Скачать .bat</a>
+      </div>
+    </div>
+
+    <h2>Расширения</h2>
+    <div class="section-head">
+      <h2 class="section-title">Quality of life</h2>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <div class="card-head">
+          <div class="card-icon"><img src="../assets/ozon-wb-helper.png" alt=""></div>
+          <div><h3>Ozon & Wildberries Helper</h3><span class="badge">v2.0</span></div>
+        </div>
+        <p>ID: <code>pppnogmdbdgepnaeoodklllnianapeeb</code></p>
+        <div class="card-actions">
+          <a class="btn btn-success" href="../downloads/ozon-wb-helper.crx">Скачать .crx</a>
+          <a class="btn" href="../downloads/install-ozon-wb-helper.bat" download>Скачать установщик</a>
+          <a class="btn" href="../ozon-wb-helper/">Подробнее</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-head">
+          <div class="card-icon"><img src="../assets/yen-to-rub.png" alt=""></div>
+          <div><h3>Yen → RUB</h3><span class="badge">v1.8</span></div>
+        </div>
+        <p>ID: <code>cdoacknmgmgemgkhjemnlcmebofaldnb</code></p>
+        <div class="card-actions">
+          <a class="btn btn-success" href="../downloads/yen-to-rub.crx">Скачать .crx</a>
+          <a class="btn" href="../downloads/install-yen-to-rub.bat" download>Скачать установщик</a>
+          <a class="btn" href="../yen-to-rub/">Подробнее</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-head">
+          <div class="card-icon"><img src="../assets/q-proxy.png" alt=""></div>
+          <div><h3>Q.Proxy</h3><span class="badge">v1.2</span></div>
+        </div>
+        <p>ID: <code>aafcbgdepfbaicngmbeknofmllehbmmk</code></p>
+        <div class="card-actions">
+          <a class="btn btn-success" href="../downloads/q-proxy.crx">Скачать .crx</a>
+          <a class="btn" href="../downloads/install-q-proxy.bat" download>Скачать установщик</a>
+          <a class="btn" href="../q-proxy/">Подробнее</a>
+        </div>
+      </article>
+    </div>
+    <div class="section-head">
+      <h2 class="section-title">Актион</h2>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <div class="card-head">
+          <div class="card-icon"><img src="../assets/a-motivac.png" alt=""></div>
+          <div><h3>A.MOTIVAC</h3><span class="badge">v1.6</span></div>
+        </div>
+        <p>ID: <code>fdopdiehcmjhmgmeojageodobmmphngh</code></p>
+        <div class="card-actions">
+          <a class="btn btn-success" href="../downloads/a-motivac.crx">Скачать .crx</a>
+          <a class="btn" href="../downloads/install-a-motivac.bat" download>Скачать установщик</a>
+          <a class="btn" href="../a-motivac/">Подробнее</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-head">
+          <div class="card-icon"><img src="../assets/a-motivac-grey.png" alt=""></div>
+          <div><h3>A.MOTIVAC</h3><span class="badge">v1.6</span></div>
+        </div>
+        <p>ID: <code>ckmfnfafacifdnkhijaidbbknlneogdj</code></p>
+        <div class="card-actions">
+          <a class="btn btn-success" href="../downloads/a-motivac-grey.crx">Скачать .crx</a>
+          <a class="btn" href="../downloads/install-a-motivac-grey.bat" download>Скачать установщик</a>
+          <a class="btn" href="../a-motivac-grey/">Подробнее</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-head">
+          <div class="card-icon"><img src="../assets/a-oplat-grey.png" alt=""></div>
+          <div><h3>A.OPLAT</h3><span class="badge">v1.3</span></div>
+        </div>
+        <p>ID: <code>menapjdenagdpanhbnbpgmhodpbkpmao</code></p>
+        <div class="card-actions">
+          <a class="btn btn-success" href="../downloads/a-oplat-grey.crx">Скачать .crx</a>
+          <a class="btn" href="../downloads/install-a-oplat-grey.bat" download>Скачать установщик</a>
+          <a class="btn" href="../a-oplat-grey/">Подробнее</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-head">
+          <div class="card-icon"><img src="../assets/a-oplat.png" alt=""></div>
+          <div><h3>A.OPLAT</h3><span class="badge">v1.3</span></div>
+        </div>
+        <p>ID: <code>eglhcjgniigdanednhkaiakkjcpodkfg</code></p>
+        <div class="card-actions">
+          <a class="btn btn-success" href="../downloads/a-oplat.crx">Скачать .crx</a>
+          <a class="btn" href="../downloads/install-a-oplat.bat" download>Скачать установщик</a>
+          <a class="btn" href="../a-oplat/">Подробнее</a>
+        </div>
+      </article>
+    </div>
+
+
+    <h2>ID расширений (для политик)</h2>
+    <ul class="feature-list">
+      <li><strong>Ozon & Wildberries Helper:</strong> <code>pppnogmdbdgepnaeoodklllnianapeeb</code></li>
+      <li><strong>Yen → RUB:</strong> <code>cdoacknmgmgemgkhjemnlcmebofaldnb</code></li>
+      <li><strong>Q.Proxy:</strong> <code>aafcbgdepfbaicngmbeknofmllehbmmk</code></li>
+      <li><strong>A.MOTIVAC:</strong> <code>fdopdiehcmjhmgmeojageodobmmphngh</code></li>
+      <li><strong>A.MOTIVAC:</strong> <code>ckmfnfafacifdnkhijaidbbknlneogdj</code></li>
+      <li><strong>A.OPLAT:</strong> <code>menapjdenagdpanhbnbpgmhodpbkpmao</code></li>
+      <li><strong>A.OPLAT:</strong> <code>eglhcjgniigdanednhkaiakkjcpodkfg</code></li>
+      <li><strong>uBlock Origin development build (стороннее):</strong> <code>fkgkibajhfbepljeaefdnfnegdcjomkh</code></li>
+    </ul>
+
+    <h2>Если что-то не работает</h2>
+    <ul class="feature-list">
+      <li><strong>Нужны права администратора</strong> - Chrome и стандартный Яндекс Браузер ставят расширение только из-под учётной записи администратора: для политик, установщика и перетаскивания. Единственный способ без прав администратора - бета-версия Яндекс Браузера и перетаскивание файла .crx.</li>
+      <li><strong>Политика «не задана»</strong> - почти всегда неверный формат: нужен подраздел <code>ExtensionInstallSources</code> с нумерованными значениями <code>REG_SZ</code>, а не <code>REG_MULTI_SZ</code>. Либо браузер не был перезапущен полностью.</li>
+      <li><strong>«Сайт не доверенный» в Яндекс Браузере</strong> - встроенное ограничение на сторонние расширения в стандартной версии, политикой не снимается. Без прав администратора используйте <a href="https://browser.yandex.ru/beta" target="_blank" rel="noopener">бета-версию Яндекс Браузера</a> и перетаскивание файла .crx; в стандартной версии поможет установка через <code>browser://tune</code> от имени администратора.</li>
+      <li><strong>«Компьютер не является корпоративным»</strong> - автоустановка (<code>ExtensionSettings</code>, <code>force_installed</code>) не применяется на неуправляемых ПК, это ожидаемо.</li>
+      <li><strong>Расширения отключаются сами</strong> - так современные сборки Chromium поступают с расширениями Manifest V2. Примените <code>install-policy.reg</code> или <a href="APPLY-POLICY.bat">APPLY-POLICY.bat</a>: они записывают политику <code>ExtensionManifestV2Availability</code> = 2 (<strong>Force enabled</strong>), и после полного перезапуска браузер их больше не отключает. На компьютере с облачным управлением (Google Admin console) то же значение нужно задать и в облачном правиле.</li>
+      <li><strong>Политика не появилась в browser://policy</strong> - файл <code>.reg</code> применили без прав администратора. Ветка <code>SOFTWARE\Policies</code> доступна только на запись администраторам (владелец - BUILTIN\Администраторы, у пользователя только чтение), и Windows в этом случае отказывает молча. Запустите <a href="APPLY-POLICY.bat">APPLY-POLICY.bat</a> и подтвердите UAC, либо примените <code>.reg</code> из консоли с правами администратора: <code>reg import install-policy.reg</code>. Текущее значение можно проверить командой <code>reg query "HKCU\SOFTWARE\Policies\YandexBrowser" /v ExtensionManifestV2Availability</code>.</li>
+      <li><strong>Windows блокирует скачанный .bat</strong> - «Подробнее» → «Выполнить в любом случае».</li>
+      <li><strong>Как откатить всё</strong> - запустите <a href="CLEAN-POLICY.bat">CLEAN-POLICY.bat</a> от имени администратора и перезапустите браузер.</li>
+    </ul>
+
+    <p class="note">Файлы <code>.reg</code> и <code>.bat</code> изменяют системные политики браузеров - применяйте их только на своих компьютерах. Приватные ключи подписи хранятся локально и никогда не публикуются.</p>
+
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© <span id="year">2026</span> Q.Marketplace</span>
+
+    <a class="footer-donate" href="#donate">Поддержать проект</a>
+    <span class="visit-badge"><img src="https://hits.sh/quasaaq.github.io/marketplace.svg?style=flat-square&label=visits&color=4f8cff" alt="Счётчик посещений" loading="lazy"></span>
+    <a href="https://github.com/QuasaaQ" target="_blank" rel="noopener">github.com/QuasaaQ</a>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
