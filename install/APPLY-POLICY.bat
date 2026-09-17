@@ -34,10 +34,11 @@ for %%R in ("HKEY_CURRENT_USER\SOFTWARE\Policies\YandexBrowser" "HKEY_CURRENT_US
   reg add "%%~R\ExtensionInstallAllowlist" /v 5 /t REG_SZ /d "pppnogmdbdgepnaeoodklllnianapeeb" /f >nul
   reg add "%%~R\ExtensionInstallAllowlist" /v 6 /t REG_SZ /d "cdoacknmgmgemgkhjemnlcmebofaldnb" /f >nul
   reg add "%%~R\ExtensionInstallAllowlist" /v 7 /t REG_SZ /d "aafcbgdepfbaicngmbeknofmllehbmmk" /f >nul
+  reg add "%%~R\ExtensionInstallAllowlist" /v 8 /t REG_SZ /d "fkgkibajhfbepljeaefdnfnegdcjomkh" /f >nul
 )
 
 echo [4/4] Removing the legacy external crx registration...
-for %%I in (fdopdiehcmjhmgmeojageodobmmphngh ckmfnfafacifdnkhijaidbbknlneogdj menapjdenagdpanhbnbpgmhodpbkpmao eglhcjgniigdanednhkaiakkjcpodkfg pppnogmdbdgepnaeoodklllnianapeeb cdoacknmgmgemgkhjemnlcmebofaldnb aafcbgdepfbaicngmbeknofmllehbmmk) do (
+for %%I in (fdopdiehcmjhmgmeojageodobmmphngh ckmfnfafacifdnkhijaidbbknlneogdj menapjdenagdpanhbnbpgmhodpbkpmao eglhcjgniigdanednhkaiakkjcpodkfg pppnogmdbdgepnaeoodklllnianapeeb cdoacknmgmgemgkhjemnlcmebofaldnb aafcbgdepfbaicngmbeknofmllehbmmk fkgkibajhfbepljeaefdnfnegdcjomkh) do (
   reg delete "HKCU\Software\Yandex\YandexBrowser\Extensions\%%I" /f >nul 2>&1
   reg delete "HKCU\Software\Google\Chrome\Extensions\%%I" /f >nul 2>&1
   reg delete "HKCU\Software\Chromium\Extensions\%%I" /f >nul 2>&1
