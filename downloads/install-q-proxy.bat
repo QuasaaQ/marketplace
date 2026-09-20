@@ -5,7 +5,7 @@ title Install q-proxy for Chrome and Yandex Browser
 echo ============================================================
 echo   Extension installer
 echo   Package : q-proxy
-echo   Version : 1.2
+echo   Version : 1.3
 echo   ID      : aafcbgdepfbaicngmbeknofmllehbmmk
 echo ============================================================
 echo.
@@ -24,7 +24,7 @@ echo.
 pause
 
 set "PKG=q-proxy"
-set "VER=1.2"
+set "VER=1.3"
 set "ID=aafcbgdepfbaicngmbeknofmllehbmmk"
 set "CRX_DIR=%LOCALAPPDATA%\Q.Marketplace"
 set "CRX_FILE=%CRX_DIR%\%PKG%.crx"
