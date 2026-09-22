@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gupdate xmlns="http://www.google.com/update2/response" protocol="2.0">
   <app appid="aafcbgdepfbaicngmbeknofmllehbmmk">
-    <updatecheck codebase="https://quasaaq.github.io/marketplace/downloads/q-proxy.crx" version="1.4" prodversionmin="94" />
+    <updatecheck codebase="https://quasaaq.github.io/marketplace/downloads/q-proxy.crx" version="1.5" prodversionmin="94" />
   </app>
 </gupdate>
