@@ -65,28 +65,30 @@
 
   <section class="choice__panel" data-install-panel="admin" hidden>
     <h2>Установка с правами администратора</h2>
-    <p class="lead">Пакет политик применяется один раз. После него расширения ставятся в один клик прямо с сайта, а обновления приходят автоматически. Политики нужны только для этого - сам файл расширения их не требует.</p>
+    <p class="lead">Найдите свой браузер и идите по шагам ниже - инструкция самодостаточна, второй блок читать не нужно. Пакет политик включается в шаге 1: после него расширения ставятся в один клик прямо с сайта, а обновления приходят автоматически. Сам файл расширения от политик не зависит.</p>
 
     <h3>Яндекс Браузер</h3>
     <ol class="steps">
       <li>Установите <a href="https://browser.yandex.ru/beta" target="_blank" rel="noopener">бета-версию Яндекс Браузера</a>.</li>
-      <li>Скачайте <a href="../install/APPLY-POLICY.bat" download>APPLY-POLICY.bat</a> и запустите его от имени администратора: он сам запросит UAC и пропишет политики для Яндекс Браузера, Chrome и Chromium.</li>
+      <li>Скачайте <a href="../install/APPLY-POLICY.bat" download>APPLY-POLICY.bat</a> и запустите его от имени администратора: он сам запросит UAC и включит установку с нашего сайта.</li>
       <li><strong>Полностью закройте браузер</strong> - все окна и иконку в трее - и запустите заново.</li>
-      <li>Нажмите <strong>«Скачать .crx»</strong> выше - распаковывать не нужно. Браузер сразу предложит установку.</li>
+      <li>Нажмите <strong>«Скачать .crx»</strong> - распаковывать не нужно. Браузер сразу предложит установку.</li>
     </ol>
+
     <h3>Chrome</h3>
     <ol class="steps">
-      <li><strong>Полностью закройте Chrome</strong> - все окна и фоновые процессы - и запустите заново: пакет политик уже применён выше, отдельно для Chrome его ставить не нужно.</li>
+      <li>Скачайте <a href="../install/APPLY-POLICY.bat" download>APPLY-POLICY.bat</a> и запустите его от имени администратора: он сам запросит UAC и включит установку с нашего сайта.</li>
+      <li><strong>Полностью закройте Chrome</strong> - все окна и фоновые процессы - и запустите заново.</li>
       <li>Проверьте <code>chrome://policy</code>: <code>ExtensionInstallSources</code> и <code>ExtensionInstallAllowlist</code> должны быть в статусе <strong>ОК</strong>.</li>
-      <li>Нажмите <strong>«Скачать .crx»</strong> выше - распаковывать не нужно. Chrome сразу предложит установку.</li>
+      <li>Нажмите <strong>«Скачать .crx»</strong> - распаковывать не нужно. Chrome сразу предложит установку.</li>
     </ol>
     <p class="note">В Chrome больше нет расширений старого Manifest V2: полный uBlock Origin там не поставится, для рекламы есть uBlock Origin Lite. В Яндекс Браузере Manifest V2 работает и без политик.</p>
 
     <h3>Другие файлы</h3>
     <ul class="feature-list">
-      <li><a href="../install/install-policy.reg" download>install-policy.reg</a> - то же самое одним файлом реестра; применять нужно <strong>с правами администратора</strong>, потому что двойной клик права не запрашивает.</li>
-      <li><a href="../install/install-policy-corporate.reg" download>install-policy-corporate.reg</a> - плюс автоустановка (<code>ExtensionSettings</code>) для управляемых ПК.</li>
-      <li><a href="../install/CLEAN-POLICY.bat" download>CLEAN-POLICY.bat</a> - откат: удаляет все политики проекта.</li>
+      <li>Вместо <code>APPLY-POLICY.bat</code> можно применить <a href="../install/install-policy.reg" download>install-policy.reg</a> - тот же набор политик одним файлом реестра. Применять нужно <strong>с правами администратора</strong> и не двойным кликом: двойной клик права не запрашивает, и Windows молча откажет в записи ветки <code>Policies</code>. Из консоли администратора: <code>reg import install-policy.reg</code>.</li>
+      <li><a href="../install/install-policy-corporate.reg" download>install-policy-corporate.reg</a> - политики плюс автоустановка (<code>ExtensionSettings</code>, <code>force_installed</code>) для управляемых ПК.</li>
+      <li><a href="../install/CLEAN-POLICY.bat" download>CLEAN-POLICY.bat</a> - откат: удаляет все политики проекта, список расширений не трогает.</li>
     </ul>
   </section>
 
@@ -95,7 +97,7 @@
     <p class="lead"><a href="https://browser.yandex.ru/beta" target="_blank" rel="noopener">Бета-версия Яндекс Браузера</a> - единственный вариант без прав администратора: скачанный файл перетаскивается прямо в окно браузера, политики не нужны.</p>
     <ol class="steps">
       <li>Установите <a href="https://browser.yandex.ru/beta" target="_blank" rel="noopener">бета-версию Яндекс Браузера</a>.</li>
-      <li>Нажмите <strong>«Скачать .crx»</strong> выше - распаковывать не нужно.</li>
+      <li>Нажмите <strong>«Скачать .crx»</strong> - распаковывать не нужно.</li>
       <li>Откройте в Браузере <code>chrome://extensions</code> или <code>browser://tune</code>.</li>
       <li>Перетащите скачанный файл в окно Браузера и подтвердите установку.</li>
       <li>Расширение появится в разделе «Из других источников».</li>
