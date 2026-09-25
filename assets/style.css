@@ -287,7 +287,9 @@ img { max-width: 100%; display: block; }
   font: inherit;
   cursor: pointer;
 }
-.btn-choice:hover { border-color: var(--accent); background: var(--surface-2); }
+/* Кнопка выбора способа установки - это ссылка, поэтому подчёркивание гасим */
+a.btn-choice { text-decoration: none; }
+.btn-choice:hover { border-color: var(--accent); background: var(--surface-2); text-decoration: none; }
 .btn-choice.is-active { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(79, 140, 255, .25); }
 
 .btn-choice__head { font-size: 17px; font-weight: 700; }

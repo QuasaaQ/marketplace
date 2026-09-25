@@ -43,7 +43,7 @@ downloads/<slug>-grey.crx  - серая сборка того же расшир�
 downloads/<slug>-v<ver>.zip- ZIP-архивы расширений
 downloads/install-<slug>.bat - установщик: скачивает crx и регистрирует его в HKCU (запускать от имени администратора)
 downloads/<slug>-update.xml- манифесты обновлений
-install/index.html         - инструкция по установке, генерируется
+install/index.html         - инструкция по установке (выбор способа + шаги), генерируется
 install/install-policy.reg - политики для Chrome (Sources + Allowlist, применяются от имени администратора)
 install/install-policy-corporate.reg - то же + ExtensionSettings (управляемые ПК)
 install/APPLY-POLICY.bat   - применение политик (Sources + Allowlist)
