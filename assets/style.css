@@ -265,6 +265,38 @@ img { max-width: 100%; display: block; }
 }
 .btn-success:hover { background: #1eb257; border-color: #1eb257; }
 
+/* ---------- Выбор способа установки ---------- */
+
+.choice { margin: 26px 0 8px; }
+.choice__title { color: var(--muted); font-size: 15px; margin: 0 0 12px; }
+
+.choice__buttons { display: flex; flex-wrap: wrap; gap: 14px; }
+
+.btn-choice {
+  flex: 1 1 300px;
+  min-width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+  padding: 18px 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
+.btn-choice:hover { border-color: var(--accent); background: var(--surface-2); }
+.btn-choice.is-active { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(79, 140, 255, .25); }
+
+.btn-choice__head { font-size: 17px; font-weight: 700; }
+.btn-choice__sub { color: var(--muted); font-size: 14px; line-height: 1.45; }
+
+.choice__panel { margin-top: 24px; border-top: 1px solid var(--border); padding-top: 4px; }
+.choice__panel[hidden] { display: none; }
+.choice__panel h3 { margin: 26px 0 8px; font-size: 18px; }
+
 /* ---------- Шаги ---------- */
 
 .steps {

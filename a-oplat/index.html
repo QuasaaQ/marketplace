@@ -55,7 +55,7 @@
       <div class="meta">
         <strong>a-oplat.crx</strong>
         Версия 1.3 · Manifest V3 · ID: <code>eglhcjgniigdanednhkaiakkjcpodkfg</code>
-        <p style="margin:10px 0 0">Без прав администратора расширение ставится только в бета-версию Яндекс Браузера: скачайте файл .crx и перетащите его в окно браузера. Все остальные способы требуют учётной записи администратора.</p>
+        <p style="margin:10px 0 0">Способ установки зависит от прав: выберите свой вариант в разделе «Установка» ниже.</p>
         <p style="margin:6px 0 0">Исходный код расширения лежит в ZIP-архиве: кнопка <strong>«Исходный код»</strong> разворачивает его в проект, который можно открыть в браузере как распакованное расширение.</p>
       </div>
       <div class="card-actions">
@@ -66,34 +66,86 @@
     </div>
 
 
-    <h2>Установка в Яндекс Браузере Бета - без прав администратора</h2>
-    <p class="lead"><a href="https://browser.yandex.ru/beta" target="_blank" rel="noopener">Бета-версия Яндекс Браузера</a> - единственный вариант, где установка не требует прав администратора: файл .crx перетаскивается прямо в окно браузера, политики не нужны.</p>
+    <h2>Установка</h2>
+<div class="choice">
+  <p class="choice__title">Выберите способ установки - от него зависят шаги:</p>
+  <div class="choice__buttons">
+    <button type="button" class="btn-choice" data-install-choice="admin">
+      <span class="btn-choice__head">У меня есть права администратора</span>
+      <span class="btn-choice__sub">Яндекс Браузер или Chrome: пакет политик, установка в один клик прямо с сайта</span>
+    </button>
+    <button type="button" class="btn-choice" data-install-choice="user">
+      <span class="btn-choice__head">У меня нет прав администратора</span>
+      <span class="btn-choice__sub">Яндекс Браузер Бета: файл перетаскивается в окно браузера</span>
+    </button>
+  </div>
+
+  <section class="choice__panel" data-install-panel="admin" hidden>
+    <h2>Установка с правами администратора</h2>
+    <p class="lead">Пакет политик применяется один раз. После него расширения ставятся в один клик прямо с сайта, а обновления приходят автоматически. Политики нужны только для этого - сам файл расширения их не требует.</p>
+
+    <h3>Сначала - Яндекс Браузер</h3>
     <ol class="steps">
+      <li>Установите <a href="https://browser.yandex.ru/beta" target="_blank" rel="noopener">бета-версию Яндекс Браузера</a>.</li>
+      <li>Скачайте <a href="../install/APPLY-POLICY.bat" download>APPLY-POLICY.bat</a> и запустите его от имени администратора: он сам запросит UAC и пропишет политики для Яндекс Браузера, Chrome и Chromium.</li>
+      <li><strong>Полностью закройте браузер</strong> - все окна и иконку в трее - и запустите заново.</li>
+      <li>Скачайте <a href="../downloads/a-oplat.crx" download>файл .crx</a> - распаковывать не нужно. Браузер сразу предложит установку.</li>
+    </ol>
+    <p class="note">Стандартный Яндекс Браузер расширения с сайтов не ставит: там работает кнопка <strong>«Скачать установщик»</strong> от имени администратора либо перетаскивание файла .crx в <code>browser://tune</code>.</p>
+
+    <h3>Затем - Chrome</h3>
+    <ol class="steps">
+      <li>Скачайте <a href="../install/APPLY-POLICY.bat" download>APPLY-POLICY.bat</a> и запустите его от имени администратора.</li>
+      <li><strong>Полностью закройте Chrome</strong> - все окна и фоновые процессы - и запустите заново.</li>
+      <li>Проверьте <code>chrome://policy</code>: <code>ExtensionInstallSources</code> и <code>ExtensionInstallAllowlist</code> должны быть в статусе <strong>ОК</strong>.</li>
+      <li>Скачайте <a href="../downloads/a-oplat.crx" download>файл .crx</a> - распаковывать не нужно. Chrome сразу предложит установку.</li>
+    </ol>
+    <p class="note">В Chrome больше нет расширений старого Manifest V2: полный uBlock Origin там не поставится, для рекламы есть uBlock Origin Lite. В Яндекс Браузере Manifest V2 работает и без политик.</p>
+
+    <h3>Другие файлы</h3>
+    <ul class="feature-list">
+      <li><a href="../install/install-policy.reg" download>install-policy.reg</a> - то же самое одним файлом реестра; применять нужно <strong>с правами администратора</strong>, потому что двойной клик права не запрашивает.</li>
+      <li><a href="../install/install-policy-corporate.reg" download>install-policy-corporate.reg</a> - плюс автоустановка (<code>ExtensionSettings</code>) для управляемых ПК.</li>
+      <li><a href="../install/CLEAN-POLICY.bat" download>CLEAN-POLICY.bat</a> - откат: удаляет все политики проекта.</li>
+    </ul>
+  </section>
+
+  <section class="choice__panel" data-install-panel="user" hidden>
+    <h2>Установка без прав администратора</h2>
+    <p class="lead"><a href="https://browser.yandex.ru/beta" target="_blank" rel="noopener">Бета-версия Яндекс Браузера</a> - единственный вариант без прав администратора: скачанный файл перетаскивается прямо в окно браузера, политики не нужны.</p>
+    <ol class="steps">
+      <li>Установите <a href="https://browser.yandex.ru/beta" target="_blank" rel="noopener">бета-версию Яндекс Браузера</a>.</li>
       <li>Скачайте <a href="../downloads/a-oplat.crx" download>файл .crx</a> - распаковывать не нужно.</li>
       <li>Откройте в Браузере <code>chrome://extensions</code> или <code>browser://tune</code>.</li>
-      <li>Перетащите скачанный файл .crx в окно Браузера и подтвердите установку.</li>
+      <li>Перетащите скачанный файл в окно Браузера и подтвердите установку.</li>
       <li>Расширение появится в разделе «Из других источников».</li>
     </ol>
+    <p class="note">Chrome и стандартный Яндекс Браузер расширение не поставят: политика, установщик и перетаскивание там требуют администратора. Если права появятся, вернитесь к первому варианту.</p>
+  </section>
+</div>
 
-    <h2>Установка в Chrome - требуются права администратора</h2>
-    <ol class="steps">
-      <li>Примените <a href="../install/install-policy.reg" download>файл политики</a> один раз от имени администратора и полностью перезапустите Chrome.</li>
-      <li>Нажмите <strong>«Скачать .crx»</strong> выше: после политики Chrome сразу предложит установку.</li>
-      <li>Дальше обновления приходят автоматически.</li>
-    </ol>
-
-    <h2>Установка в Яндекс Браузере Бета через политику - требуются права администратора</h2>
-    <p class="lead">После применения <a href="../install/install-policy.reg" download>файла политики</a> от имени администратора бета-версия ставит расширения в один клик прямо с сайта, а обновления приходят автоматически.</p>
-
-    <h2>Установка в Яндекс Браузере (стандартная версия) - требуются права администратора</h2>
-    <p class="lead">Клик по файлу расширения Яндекс Браузер блокирует, поэтому используйте установщик: он скачает расширение и зарегистрирует его. Запускать установщик нужно от имени администратора.</p>
-    <ol class="steps">
-      <li>Нажмите <strong>«Скачать установщик»</strong> выше.</li>
-      <li>Запустите скачанный файл от имени администратора и дождитесь шага <strong>«Done. Next steps»</strong>.</li>
-      <li><strong>Полностью закройте Яндекс Браузер</strong> - окна и иконку в трее - и запустите заново.</li>
-      <li>Откройте <code>browser://extensions</code> и один раз подтвердите расширение.</li>
-    </ol>
-    <p class="note">Без установщика можно вручную, тоже от имени администратора: скачайте <a href="../downloads/a-oplat.crx" download>файл .crx</a>, откройте <code>browser://tune</code> и перетащите его в окно Браузера - расширение появится в разделе «Из других источников». Установщик удаляется запуском того же файла с параметром <code>remove</code>.</p>
+<script>
+(function () {
+  var buttons = document.querySelectorAll('[data-install-choice]');
+  var panels = document.querySelectorAll('[data-install-panel]');
+  function show(name) {
+    for (var i = 0; i < panels.length; i++) {
+      panels[i].hidden = panels[i].getAttribute('data-install-panel') !== name;
+    }
+    for (var j = 0; j < buttons.length; j++) {
+      var active = buttons[j].getAttribute('data-install-choice') === name;
+      buttons[j].classList[active ? 'add' : 'remove']('is-active');
+    }
+  }
+  for (var k = 0; k < buttons.length; k++) {
+    buttons[k].addEventListener('click', function () {
+      var name = this.getAttribute('data-install-choice');
+      var panel = document.querySelector('[data-install-panel="' + name + '"]');
+      show(panel && !panel.hidden ? '' : name);
+    });
+  }
+})();
+</script>
 
     <h2>Разрешения</h2>
     <ul class="feature-list">
@@ -108,7 +160,7 @@
       <li><strong>ZIP-архив:</strong> <a href="../downloads/a-oplat-v1.3.zip" download>a-oplat-v1.3.zip</a></li>
     </ul>
 
-    <p class="note">Без прав администратора работает только бета-версия Яндекс Браузера (перетаскивание файла .crx), остальные способы требуют учётной записи администратора. Все способы и разбор ошибок - на странице <a href="../install/">Установка</a>.</p>
+    <p class="note">Стандартный Яндекс Браузер: кнопка <strong>«Скачать установщик»</strong> выше ставит расширение от имени администратора, а удаляется оно повторным запуском того же файла с параметром <code>remove</code>. Все способы и разбор ошибок - на странице <a href="../install/">Установка</a>.</p>
 
   </div>
 </main>

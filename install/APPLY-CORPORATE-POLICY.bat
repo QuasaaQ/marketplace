@@ -16,11 +16,11 @@ echo [1/4] Writing ExtensionSettings (force_installed, managed PC)...
 powershell -NoProfile -ExecutionPolicy Bypass -Command "foreach($r in @('HKLM:\SOFTWARE\Policies\YandexBrowser','HKLM:\SOFTWARE\Policies\Google\Chrome','HKLM:\SOFTWARE\Policies\Chromium','HKLM:\SOFTWARE\WOW6432Node\Policies\YandexBrowser','HKLM:\SOFTWARE\WOW6432Node\Policies\Google\Chrome','HKLM:\SOFTWARE\WOW6432Node\Policies\Chromium')){ if(-not(Test-Path -LiteralPath $r)){ New-Item -Path $r -Force | Out-Null }; New-ItemProperty -Path $r -Name 'ExtensionSettings' -Value (Get-Content -Raw -LiteralPath $env:QMPOL) -PropertyType String -Force | Out-Null; Write-Host ('  policy: ' + $r) }"
 if errorlevel 1 goto fail
 
-echo [2/4] Blocking the browser from disabling Manifest V2 extensions...
+echo [2/4] Removing the obsolete Manifest V2 policy value...
 for %%R in ("HKEY_LOCAL_MACHINE\SOFTWARE\Policies\YandexBrowser" "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\YandexBrowser" "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome" "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Google\Chrome" "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Chromium" "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Chromium") do (
-  reg add "%%~R" /v ExtensionManifestV2Availability /t REG_DWORD /d 2 /f >nul
+  reg delete "%%~R" /v ExtensionManifestV2Availability /f >nul 2>&1
 )
-powershell -NoProfile -ExecutionPolicy Bypass -Command "$c=0; foreach($r in @('HKLM:\SOFTWARE\Policies\YandexBrowser','HKLM:\SOFTWARE\Policies\Google\Chrome','HKLM:\SOFTWARE\Policies\Chromium','HKLM:\SOFTWARE\WOW6432Node\Policies\YandexBrowser','HKLM:\SOFTWARE\WOW6432Node\Policies\Google\Chrome','HKLM:\SOFTWARE\WOW6432Node\Policies\Chromium')){ $v=(Get-ItemProperty -LiteralPath $r -ErrorAction SilentlyContinue).PSObject.Properties['ExtensionManifestV2Availability']; if($v -and [int]$v.Value -eq 2){ $c++ } }; Write-Host ('  Manifest V2 policy present in ' + $c + ' of 6 machine branches'); if($c -ne 6){ Write-Host '  [WARNING] Run this file AS ADMINISTRATOR - without elevation the Policies branch is read-only.' }"
+powershell -NoProfile -ExecutionPolicy Bypass -Command "$c=0; foreach($r in @('HKLM:\SOFTWARE\Policies\YandexBrowser','HKLM:\SOFTWARE\Policies\Google\Chrome','HKLM:\SOFTWARE\Policies\Chromium','HKLM:\SOFTWARE\WOW6432Node\Policies\YandexBrowser','HKLM:\SOFTWARE\WOW6432Node\Policies\Google\Chrome','HKLM:\SOFTWARE\WOW6432Node\Policies\Chromium')){ $v=(Get-ItemProperty -LiteralPath $r -ErrorAction SilentlyContinue).PSObject.Properties['ExtensionInstallSources']; if($v){ $c++ } }; Write-Host ('  Install sources written in ' + $c + ' of 6 machine branches'); if($c -ne 6){ Write-Host '  [WARNING] Run this file AS ADMINISTRATOR - without elevation the Policies branch is read-only.' }"
 
 echo [3/4] Writing install sources and allowlist...
 for %%R in ("HKEY_LOCAL_MACHINE\SOFTWARE\Policies\YandexBrowser" "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\YandexBrowser" "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome" "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Google\Chrome" "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Chromium" "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Chromium") do (
@@ -64,8 +64,8 @@ echo  1. Close ALL browser windows completely (check the tray).
 echo  2. Start the browser again.
 echo  3. Run install-*.bat AS ADMINISTRATOR and confirm once.
 echo.
-echo  Manifest V2 is force enabled (ExtensionManifestV2Availability=2),
-echo  so the browser no longer disables the old-MV2 extensions itself.
+echo  The obsolete Manifest V2 policy value is removed from both scopes.
+echo  Modern Chrome dropped Manifest V2 itself; Yandex Browser keeps it.
 echo.
 echo  install-policy.reg must be applied AS ADMINISTRATOR too: a merged
 echo  .reg raises no UAC prompt and Windows silently denies writes to the

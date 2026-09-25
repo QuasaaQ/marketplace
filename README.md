@@ -44,10 +44,10 @@ downloads/<slug>-v<ver>.zip- ZIP-архивы расширений
 downloads/install-<slug>.bat - установщик: скачивает crx и регистрирует его в HKCU (запускать от имени администратора)
 downloads/<slug>-update.xml- манифесты обновлений
 install/index.html         - инструкция по установке, генерируется
-install/install-policy.reg - политики для Chrome (Sources + Allowlist + MV2, применяются от имени администратора)
+install/install-policy.reg - политики для Chrome (Sources + Allowlist, применяются от имени администратора)
 install/install-policy-corporate.reg - то же + ExtensionSettings (управляемые ПК)
-install/APPLY-POLICY.bat   - применение политик (Sources + Allowlist + MV2)
-install/CLEAN-POLICY.bat   - откат политик (включая ExtensionManifestV2Availability)
+install/APPLY-POLICY.bat   - применение политик (Sources + Allowlist)
+install/CLEAN-POLICY.bat   - откат политик
 <slug>/index.html          - страница расширения, генерируется
 .nojekyll                  - отключает обработку Jekyll
 ```
@@ -64,28 +64,17 @@ install/CLEAN-POLICY.bat   - откат политик (включая Extension
 
 `REG_MULTI_SZ` браузеры не читают: политика выглядит как «не заadaна», хотя значение в реестре есть.
 
-### Манифест V2: запрет браузеру отключать расширения
+### Манифест V2: политика больше не пишется
 
-Современные сборки Chromium сами отключают и удаляют расширения Manifest V2 (Chrome 127+).
-Скрипты политик записывают значение `ExtensionManifestV2Availability` = 2 (`Force enabled`):
+Политика `ExtensionManifestV2Availability` из проекта удалена. Chrome убрал её
+вместе с поддержкой Manifest V2: текущие сборки не знают такого значения, и в
+отчёте о политиках оно выглядело как «Неизвестное правило». Яндекс Браузер держит
+расширения Manifest V2 включёнными сам, политика ему не нужна.
 
-```
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
-"ExtensionManifestV2Availability"=dword:00000002
-```
-
-Значение имеет тип `REG_DWORD` (не `REG_SZ`) и пишется в машинные ветки
-`SOFTWARE\Policies` (HKLM и WOW6432Node) для Chrome, Яндекс Браузера и Chromium.
-Запись ровно в одну область - машинную: если задать одно и то же правило и в HKCU,
-и в HKLM, отчёт о политиках помечает его как замену, потому что машинные правила
-перекрывают пользовательские. Обновлённые скрипты копию в HKCU удаляют.
-При облачном управлении
-(Google Admin console) локальный ключ - только запасной вариант: в облачном правиле
-`ExtensionManifestV2Availability` тоже нужно выставить `Force enabled` (2), иначе
-администратор перезапишет локальную настройку.
-https://chromeenterprise.google/policies/#ExtensionManifestV2Availability
-
-`CLEAN-POLICY.bat` удаляет это значение вместе с остальными политиками проекта.
+Пакет политик теперь наоборот удаляет это значение в машинных и пользовательских
+ветках, если оно осталось от прежних версий. На установку расширений это не
+влияет: работу обеспечивают `ExtensionInstallSources` и `ExtensionInstallAllowlist`,
+а они пишутся только в машинные ветки - одна область на политику.
 
 ## Способы установки
 
@@ -96,7 +85,7 @@ https://chromeenterprise.google/policies/#ExtensionManifestV2Availability
 | Яндекс Браузер Бета | политика `install-policy.reg` → установка в один клик с сайта | нужны |
 | Яндекс Браузер (стандартная версия) | установщик `install-<slug>.bat` или `.crx` → `browser://tune` | нужны |
 | Управляемые ПК | `install-policy-corporate.reg` (`ExtensionSettings`, force_installed) | нужны |
-| Все браузеры | `ExtensionManifestV2Availability` = 2 - браузер не отключает и не удаляет расширения Manifest V2 | нужны |
+| Chrome, Manifest V2 | не поддерживается: нужен аналог на Manifest V3 (например uBlock Origin Lite) | - |
 
 Ограничения, проверенные на практике:
 

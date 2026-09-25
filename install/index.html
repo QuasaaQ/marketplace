@@ -48,83 +48,97 @@
     <a class="crumb" href="../">← Все расширения</a>
 
     <h1>Установка расширений</h1>
-    <p class="lead">Без прав администратора расширение ставится только в бета-версию Яндекс Браузера - перетаскиванием файла .crx. Все остальные способы (политики для Chrome, установщик и перетаскивание в стандартном Яндекс Браузере, автоустановка на парк ПК) требуют учётной записи администратора.</p>
+    <p class="lead">Расширение ставится прямо с этого сайта. Сначала выберите свой вариант - от него зависят шаги, - затем нажмите <strong>«Скачать .crx»</strong> в карточке нужного расширения ниже.</p>
 
-    <h2>Яндекс Браузер Бета - без прав администратора</h2>
-    <p class="lead"><a href="https://browser.yandex.ru/beta" target="_blank" rel="noopener">Бета-версия Яндекс Браузера</a> - единственный вариант без прав администратора: скачанный файл .crx перетаскивается прямо в окно браузера, политики не нужны.</p>
+<div class="choice">
+  <p class="choice__title">Выберите способ установки - от него зависят шаги:</p>
+  <div class="choice__buttons">
+    <button type="button" class="btn-choice" data-install-choice="admin">
+      <span class="btn-choice__head">У меня есть права администратора</span>
+      <span class="btn-choice__sub">Яндекс Браузер или Chrome: пакет политик, установка в один клик прямо с сайта</span>
+    </button>
+    <button type="button" class="btn-choice" data-install-choice="user">
+      <span class="btn-choice__head">У меня нет прав администратора</span>
+      <span class="btn-choice__sub">Яндекс Браузер Бета: файл перетаскивается в окно браузера</span>
+    </button>
+  </div>
+
+  <section class="choice__panel" data-install-panel="admin" hidden>
+    <h2>Установка с правами администратора</h2>
+    <p class="lead">Пакет политик применяется один раз. После него расширения ставятся в один клик прямо с сайта, а обновления приходят автоматически. Политики нужны только для этого - сам файл расширения их не требует.</p>
+
+    <h3>Сначала - Яндекс Браузер</h3>
     <ol class="steps">
       <li>Установите <a href="https://browser.yandex.ru/beta" target="_blank" rel="noopener">бета-версию Яндекс Браузера</a>.</li>
-      <li>Нажмите <strong>«Скачать .crx»</strong> у нужного расширения ниже - распаковывать не нужно.</li>
-      <li>Откройте в Браузере <code>chrome://extensions</code> или <code>browser://tune</code>.</li>
-      <li>Перетащите скачанный файл .crx в окно Браузера и подтвердите установку.</li>
-      <li>Расширение появится в разделе <strong>«Из других источников»</strong>.</li>
+      <li>Скачайте <a href="../install/APPLY-POLICY.bat" download>APPLY-POLICY.bat</a> и запустите его от имени администратора: он сам запросит UAC и пропишет политики для Яндекс Браузера, Chrome и Chromium.</li>
+      <li><strong>Полностью закройте браузер</strong> - все окна и иконку в трее - и запустите заново.</li>
+      <li>Нажмите <strong>«Скачать .crx»</strong> выше - распаковывать не нужно. Браузер сразу предложит установку.</li>
     </ol>
+    <p class="note">Стандартный Яндекс Браузер расширения с сайтов не ставит: там работает кнопка <strong>«Скачать установщик»</strong> от имени администратора либо перетаскивание файла .crx в <code>browser://tune</code>.</p>
 
-    <h2>Chrome - установка в один клик (требуются права администратора)</h2>
+    <h3>Затем - Chrome</h3>
     <ol class="steps">
-      <li>Скачайте <a href="install-policy.reg" download><code>install-policy.reg</code></a> и примените его <strong>с правами администратора</strong>. Проще всего запустить <a href="APPLY-POLICY.bat">APPLY-POLICY.bat</a> - он сам запросит UAC. Важно: при двойном клике по <code>.reg</code> повышение прав не запрашивается, и Windows молча отказывает в записи ветки <code>Policies</code> - файл «применится», а политики в браузере не появятся.</li>
+      <li>Скачайте <a href="../install/APPLY-POLICY.bat" download>APPLY-POLICY.bat</a> и запустите его от имени администратора.</li>
       <li><strong>Полностью закройте Chrome</strong> - все окна и фоновые процессы - и запустите заново.</li>
-      <li>Проверьте: <code>chrome://policy</code> → <code>ExtensionInstallSources</code> и <code>ExtensionManifestV2Availability</code> должны быть в статусе <strong>ОК</strong>.</li>
-      <li>Нажмите <strong>«Скачать .crx»</strong> у нужного расширения ниже: после политики Chrome сразу предложит установку.</li>
+      <li>Проверьте <code>chrome://policy</code>: <code>ExtensionInstallSources</code> и <code>ExtensionInstallAllowlist</code> должны быть в статусе <strong>ОК</strong>.</li>
+      <li>Нажмите <strong>«Скачать .crx»</strong> выше - распаковывать не нужно. Chrome сразу предложит установку.</li>
     </ol>
-    <p class="lead">Файл политик заодно включает <code>ExtensionManifestV2Availability</code> = 2 (<strong>Force enabled</strong>): браузер перестаёт сам отключать и удалять расширения устаревшего Manifest V2.</p>
+    <p class="note">В Chrome больше нет расширений старого Manifest V2: полный uBlock Origin там не поставится, для рекламы есть uBlock Origin Lite. В Яндекс Браузере Manifest V2 работает и без политик.</p>
 
-    <h2>Яндекс Браузер Бета - установка в один клик через политику (требуются права администратора)</h2>
-    <p class="lead"><a href="https://browser.yandex.ru/beta" target="_blank" rel="noopener">Бета-версия Яндекс Браузера</a> работает как Chrome: после применения политик расширения ставятся в один клик прямо с сайта, а обновления приходят автоматически. Применение политик требует прав администратора.</p>
+    <h3>Другие файлы</h3>
+    <ul class="feature-list">
+      <li><a href="../install/install-policy.reg" download>install-policy.reg</a> - то же самое одним файлом реестра; применять нужно <strong>с правами администратора</strong>, потому что двойной клик права не запрашивает.</li>
+      <li><a href="../install/install-policy-corporate.reg" download>install-policy-corporate.reg</a> - плюс автоустановка (<code>ExtensionSettings</code>) для управляемых ПК.</li>
+      <li><a href="../install/CLEAN-POLICY.bat" download>CLEAN-POLICY.bat</a> - откат: удаляет все политики проекта.</li>
+    </ul>
+  </section>
+
+  <section class="choice__panel" data-install-panel="user" hidden>
+    <h2>Установка без прав администратора</h2>
+    <p class="lead"><a href="https://browser.yandex.ru/beta" target="_blank" rel="noopener">Бета-версия Яндекс Браузера</a> - единственный вариант без прав администратора: скачанный файл перетаскивается прямо в окно браузера, политики не нужны.</p>
     <ol class="steps">
-      <li>Скачайте <a href="install-policy.reg" download><code>install-policy.reg</code></a> и примените его с правами администратора: лучше через <a href="APPLY-POLICY.bat">APPLY-POLICY.bat</a>, который сам запрашивает UAC.</li>
-      <li><strong>Полностью закройте браузер</strong> - окна и иконку в трее - и запустите заново.</li>
-      <li>Нажмите <strong>«Скачать .crx»</strong> у нужного расширения ниже: Браузер сразу предложит установку.</li>
+      <li>Установите <a href="https://browser.yandex.ru/beta" target="_blank" rel="noopener">бета-версию Яндекс Браузера</a>.</li>
+      <li>Нажмите <strong>«Скачать .crx»</strong> выше - распаковывать не нужно.</li>
+      <li>Откройте в Браузере <code>chrome://extensions</code> или <code>browser://tune</code>.</li>
+      <li>Перетащите скачанный файл в окно Браузера и подтвердите установку.</li>
+      <li>Расширение появится в разделе «Из других источников».</li>
     </ol>
+    <p class="note">Chrome и стандартный Яндекс Браузер расширение не поставят: политика, установщик и перетаскивание там требуют администратора. Если права появятся, вернитесь к первому варианту.</p>
+  </section>
+</div>
 
-    <h2>Яндекс Браузер (стандартная версия) - установщик или перетаскивание (требуются права администратора)</h2>
-    <p class="lead">Яндекс Браузер не разрешает ставить сторонние расширения с сайтов и отвечает «Невозможно добавить приложение, расширение или пользовательский скрипт с этого сайта». Работают два способа, оба требуют прав администратора.</p>
-
-    <h3 class="section-title" style="font-size:19px;margin:26px 0 6px">Способ 1 - установщик</h3>
-    <ol class="steps">
-      <li>Нажмите <strong>Скачать установщик</strong> у нужного расширения ниже.</li>
-      <li>Запустите файл от имени администратора: он сам скачает расширение и зарегистрирует его.</li>
-      <li><strong>Полностью закройте Яндекс Браузер</strong> - окна и иконку в трее - и запустите заново.</li>
-      <li>Откройте <code>browser://extensions</code> и один раз подтвердите расширение.</li>
-    </ol>
-
-    <h3 class="section-title" style="font-size:19px;margin:26px 0 6px">Способ 2 - перетаскивание</h3>
-    <ol class="steps">
-      <li>На странице расширения нажмите <strong>Скачать .crx</strong> - распаковывать не нужно.</li>
-      <li>Откройте в Браузере страницу <code>browser://tune</code>.</li>
-      <li>Перетащите скачанный файл .crx в окно Браузера и подтвердите установку. Без прав администратора этот способ не работает.</li>
-      <li>Расширение появится в разделе <strong>«Из других источников»</strong>.</li>
-    </ol>
+<script>
+(function () {
+  var buttons = document.querySelectorAll('[data-install-choice]');
+  var panels = document.querySelectorAll('[data-install-panel]');
+  function show(name) {
+    for (var i = 0; i < panels.length; i++) {
+      panels[i].hidden = panels[i].getAttribute('data-install-panel') !== name;
+    }
+    for (var j = 0; j < buttons.length; j++) {
+      var active = buttons[j].getAttribute('data-install-choice') === name;
+      buttons[j].classList[active ? 'add' : 'remove']('is-active');
+    }
+  }
+  for (var k = 0; k < buttons.length; k++) {
+    buttons[k].addEventListener('click', function () {
+      var name = this.getAttribute('data-install-choice');
+      var panel = document.querySelector('[data-install-panel="' + name + '"]');
+      show(panel && !panel.hidden ? '' : name);
+    });
+  }
+})();
+</script>
 
     <h2>Автоустановка на парк ПК (требуются права администратора)</h2>
     <p class="lead">Политика <code>ExtensionSettings</code> с режимом <code>force_installed</code> ставит расширения сама, без действий пользователя, но применяется от имени администратора и работает только на управляемых (корпоративных) компьютерах.</p>
     <div class="download-box">
       <div class="meta">
         <strong>install-policy-corporate.reg</strong>
-        Политики Sources + Allowlist + MV2 + ExtensionSettings
+        Политики Sources + Allowlist + ExtensionSettings
       </div>
       <div class="card-actions">
         <a class="btn" href="install-policy-corporate.reg" download>Скачать .reg</a>
-      </div>
-    </div>
-
-    <p class="lead">Скрипты применения и отката политик во всех браузерах (запрашивают права администратора сами):</p>
-    <div class="download-box">
-      <div class="meta">
-        <strong>APPLY-POLICY.bat</strong>
-        Включает установку из нашего сайта (Sources + Allowlist) и разрешает Manifest V2
-      </div>
-      <div class="card-actions">
-        <a class="btn" href="APPLY-POLICY.bat" download>Скачать .bat</a>
-      </div>
-    </div>
-    <div class="download-box">
-      <div class="meta">
-        <strong>CLEAN-POLICY.bat</strong>
-        Удаляет установленные политики (откат)
-      </div>
-      <div class="card-actions">
-        <a class="btn" href="CLEAN-POLICY.bat" download>Скачать .bat</a>
       </div>
     </div>
 
@@ -243,8 +257,8 @@
       <li><strong>Политика «не задана»</strong> - почти всегда неверный формат: нужен подраздел <code>ExtensionInstallSources</code> с нумерованными значениями <code>REG_SZ</code>, а не <code>REG_MULTI_SZ</code>. Либо браузер не был перезапущен полностью.</li>
       <li><strong>«Сайт не доверенный» в Яндекс Браузере</strong> - встроенное ограничение на сторонние расширения в стандартной версии, политикой не снимается. Без прав администратора используйте <a href="https://browser.yandex.ru/beta" target="_blank" rel="noopener">бета-версию Яндекс Браузера</a> и перетаскивание файла .crx; в стандартной версии поможет установка через <code>browser://tune</code> от имени администратора.</li>
       <li><strong>«Компьютер не является корпоративным»</strong> - автоустановка (<code>ExtensionSettings</code>, <code>force_installed</code>) не применяется на неуправляемых ПК, это ожидаемо.</li>
-      <li><strong>Расширения отключаются сами</strong> - так современные сборки Chromium поступают с расширениями Manifest V2. Примените <code>install-policy.reg</code> или <a href="APPLY-POLICY.bat">APPLY-POLICY.bat</a>: они записывают политику <code>ExtensionManifestV2Availability</code> = 2 (<strong>Force enabled</strong>), и после полного перезапуска браузер их больше не отключает. На компьютере с облачным управлением (Google Admin console) то же значение нужно задать и в облачном правиле.</li>
-      <li><strong>Политика не появилась в browser://policy</strong> - файл <code>.reg</code> применили без прав администратора. Ветка <code>SOFTWARE\Policies</code> доступна только на запись администраторам (владелец - BUILTIN\Администраторы, у пользователя только чтение), и Windows в этом случае отказывает молча. Запустите <a href="APPLY-POLICY.bat">APPLY-POLICY.bat</a> и подтвердите UAC, либо примените <code>.reg</code> из консоли с правами администратора: <code>reg import install-policy.reg</code>. Текущее значение можно проверить командой <code>reg query "HKCU\SOFTWARE\Policies\YandexBrowser" /v ExtensionManifestV2Availability</code>.</li>
+      <li><strong>Расширение старого Manifest V2 не ставится</strong> - в Chrome поддержку Manifest V2 удалили вместе с политикой <code>ExtensionManifestV2Availability</code>, поэтому там ставятся только расширения Manifest V3. Полный uBlock Origin работает в Яндекс Браузере; для Chrome есть uBlock Origin Lite. Политики на это не влияют.</li>
+      <li><strong>Политика не появилась в browser://policy</strong> - файл <code>.reg</code> применили без прав администратора. Ветка <code>SOFTWARE\Policies</code> доступна только на запись администраторам (владелец - BUILTIN\Администраторы, у пользователя только чтение), и Windows в этом случае отказывает молча. Запустите <a href="APPLY-POLICY.bat">APPLY-POLICY.bat</a> и подтвердите UAC, либо примените <code>.reg</code> из консоли с правами администратора: <code>reg import install-policy.reg</code>. Политики пишутся в машинные ветки: проверить можно командой <code>reg query "HKLM\SOFTWARE\Policies\Google\Chrome" /v ExtensionInstallSources</code>.</li>
       <li><strong>Windows блокирует скачанный .bat</strong> - «Подробнее» → «Выполнить в любом случае».</li>
       <li><strong>Как откатить всё</strong> - запустите <a href="CLEAN-POLICY.bat">CLEAN-POLICY.bat</a> от имени администратора и перезапустите браузер.</li>
     </ul>
