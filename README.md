@@ -74,8 +74,12 @@ install/CLEAN-POLICY.bat   - откат политик (включая Extension
 "ExtensionManifestV2Availability"=dword:00000002
 ```
 
-Значение имеет тип `REG_DWORD` (не `REG_SZ`) и пишется в те же ветки `SOFTWARE\Policies`
-для Chrome, Яндекс Браузера и Chromium (HKCU, HKLM, WOW6432Node). При облачном управлении
+Значение имеет тип `REG_DWORD` (не `REG_SZ`) и пишется в машинные ветки
+`SOFTWARE\Policies` (HKLM и WOW6432Node) для Chrome, Яндекс Браузера и Chromium.
+Запись ровно в одну область - машинную: если задать одно и то же правило и в HKCU,
+и в HKLM, отчёт о политиках помечает его как замену, потому что машинные правила
+перекрывают пользовательские. Обновлённые скрипты копию в HKCU удаляют.
+При облачном управлении
 (Google Admin console) локальный ключ - только запасной вариант: в облачном правиле
 `ExtensionManifestV2Availability` тоже нужно выставить `Force enabled` (2), иначе
 администратор перезапишет локальную настройку.

@@ -14,13 +14,13 @@ echo [1/4] Clearing the neutralized ExtensionSettings value...
 powershell -NoProfile -ExecutionPolicy Bypass -Command "foreach($r in @('HKCU:\SOFTWARE\Policies\YandexBrowser','HKCU:\SOFTWARE\Policies\Google\Chrome','HKCU:\SOFTWARE\Policies\Chromium','HKLM:\SOFTWARE\Policies\YandexBrowser','HKLM:\SOFTWARE\Policies\Google\Chrome','HKLM:\SOFTWARE\Policies\Chromium','HKLM:\SOFTWARE\WOW6432Node\Policies\YandexBrowser','HKLM:\SOFTWARE\WOW6432Node\Policies\Google\Chrome','HKLM:\SOFTWARE\WOW6432Node\Policies\Chromium')){ Remove-ItemProperty -Path $r -Name 'ExtensionSettings' -ErrorAction SilentlyContinue }"
 
 echo [2/4] Blocking the browser from disabling Manifest V2 extensions...
-for %%R in ("HKEY_CURRENT_USER\SOFTWARE\Policies\YandexBrowser" "HKEY_CURRENT_USER\SOFTWARE\Policies\Google\Chrome" "HKEY_CURRENT_USER\SOFTWARE\Policies\Chromium" "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\YandexBrowser" "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\YandexBrowser" "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome" "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Google\Chrome" "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Chromium" "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Chromium") do (
+for %%R in ("HKEY_LOCAL_MACHINE\SOFTWARE\Policies\YandexBrowser" "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\YandexBrowser" "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome" "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Google\Chrome" "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Chromium" "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Chromium") do (
   reg add "%%~R" /v ExtensionManifestV2Availability /t REG_DWORD /d 2 /f >nul
 )
-powershell -NoProfile -ExecutionPolicy Bypass -Command "$c=0; foreach($r in @('HKCU:\SOFTWARE\Policies\YandexBrowser','HKCU:\SOFTWARE\Policies\Google\Chrome','HKCU:\SOFTWARE\Policies\Chromium','HKLM:\SOFTWARE\Policies\YandexBrowser','HKLM:\SOFTWARE\Policies\Google\Chrome','HKLM:\SOFTWARE\Policies\Chromium','HKLM:\SOFTWARE\WOW6432Node\Policies\YandexBrowser','HKLM:\SOFTWARE\WOW6432Node\Policies\Google\Chrome','HKLM:\SOFTWARE\WOW6432Node\Policies\Chromium')){ $v=(Get-ItemProperty -LiteralPath $r -ErrorAction SilentlyContinue).PSObject.Properties['ExtensionManifestV2Availability']; if($v -and [int]$v.Value -eq 2){ $c++ } }; Write-Host ('  Manifest V2 policy present in ' + $c + ' of 9 policy branches'); if($c -ne 9){ Write-Host '  [WARNING] Run this file AS ADMINISTRATOR - without elevation the Policies branch is read-only.' }"
+powershell -NoProfile -ExecutionPolicy Bypass -Command "$c=0; foreach($r in @('HKLM:\SOFTWARE\Policies\YandexBrowser','HKLM:\SOFTWARE\Policies\Google\Chrome','HKLM:\SOFTWARE\Policies\Chromium','HKLM:\SOFTWARE\WOW6432Node\Policies\YandexBrowser','HKLM:\SOFTWARE\WOW6432Node\Policies\Google\Chrome','HKLM:\SOFTWARE\WOW6432Node\Policies\Chromium')){ $v=(Get-ItemProperty -LiteralPath $r -ErrorAction SilentlyContinue).PSObject.Properties['ExtensionManifestV2Availability']; if($v -and [int]$v.Value -eq 2){ $c++ } }; Write-Host ('  Manifest V2 policy present in ' + $c + ' of 6 machine branches'); if($c -ne 6){ Write-Host '  [WARNING] Run this file AS ADMINISTRATOR - without elevation the Policies branch is read-only.' }"
 
 echo [3/4] Writing install sources and allowlist...
-for %%R in ("HKEY_CURRENT_USER\SOFTWARE\Policies\YandexBrowser" "HKEY_CURRENT_USER\SOFTWARE\Policies\Google\Chrome" "HKEY_CURRENT_USER\SOFTWARE\Policies\Chromium" "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\YandexBrowser" "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\YandexBrowser" "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome" "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Google\Chrome" "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Chromium" "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Chromium") do (
+for %%R in ("HKEY_LOCAL_MACHINE\SOFTWARE\Policies\YandexBrowser" "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\YandexBrowser" "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome" "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Google\Chrome" "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Chromium" "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Chromium") do (
   reg delete "%%~R" /v ExtensionInstallForcelist /f >nul 2>&1
   reg delete "%%~R\ExtensionInstallForcelist" /f >nul 2>&1
   reg delete "%%~R\ExtensionInstallSources" /f >nul 2>&1
@@ -35,6 +35,13 @@ for %%R in ("HKEY_CURRENT_USER\SOFTWARE\Policies\YandexBrowser" "HKEY_CURRENT_US
   reg add "%%~R\ExtensionInstallAllowlist" /v 6 /t REG_SZ /d "cdoacknmgmgemgkhjemnlcmebofaldnb" /f >nul
   reg add "%%~R\ExtensionInstallAllowlist" /v 7 /t REG_SZ /d "aafcbgdepfbaicngmbeknofmllehbmmk" /f >nul
   reg add "%%~R\ExtensionInstallAllowlist" /v 8 /t REG_SZ /d "fkgkibajhfbepljeaefdnfnegdcjomkh" /f >nul
+)
+for %%R in ("HKEY_CURRENT_USER\SOFTWARE\Policies\YandexBrowser" "HKEY_CURRENT_USER\SOFTWARE\Policies\Google\Chrome" "HKEY_CURRENT_USER\SOFTWARE\Policies\Chromium") do (
+  reg delete "%%~R" /v ExtensionManifestV2Availability /f >nul 2>&1
+  reg delete "%%~R" /v ExtensionSettings /f >nul 2>&1
+  reg delete "%%~R\ExtensionInstallSources" /f >nul 2>&1
+  reg delete "%%~R\ExtensionInstallAllowlist" /f >nul 2>&1
+  reg delete "%%~R\ExtensionInstallForcelist" /f >nul 2>&1
 )
 
 echo [4/4] Removing the legacy external crx registration...
